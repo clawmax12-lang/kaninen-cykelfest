@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Background with safe zone padding (maskable) -->
+  <rect width="512" height="512" fill="#1C4F4A"/>
+
+  <!-- Left ear -->
+  <ellipse cx="180" cy="160" rx="46" ry="100" fill="#F5EFE0"/>
+  <ellipse cx="180" cy="162" rx="26" ry="76" fill="#E8A0A8"/>
+
+  <!-- Right ear -->
+  <ellipse cx="332" cy="160" rx="46" ry="100" fill="#F5EFE0"/>
+  <ellipse cx="332" cy="162" rx="26" ry="76" fill="#E8A0A8"/>
+
+  <!-- Head -->
+  <ellipse cx="256" cy="318" rx="138" ry="128" fill="#F5EFE0"/>
+
+  <!-- Eyes -->
+  <circle cx="212" cy="288" r="18" fill="#1C4F4A"/>
+  <circle cx="300" cy="288" r="18" fill="#1C4F4A"/>
+  <!-- Eye shine -->
+  <circle cx="219" cy="281" r="6" fill="white"/>
+  <circle cx="307" cy="281" r="6" fill="white"/>
+
+  <!-- Nose -->
+  <ellipse cx="256" cy="326" rx="13" ry="9" fill="#E8A0A8"/>
+
+  <!-- Mouth -->
+  <path d="M256 335 Q238 354 226 350" stroke="#B08090" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M256 335 Q274 354 286 350" stroke="#B08090" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Whiskers left -->
+  <line x1="170" y1="326" x2="238" y2="322" stroke="#C8C0B0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="172" y1="340" x2="238" y2="332" stroke="#C8C0B0" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Whiskers right -->
+  <line x1="274" y1="322" x2="342" y2="326" stroke="#C8C0B0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="274" y1="332" x2="340" y2="340" stroke="#C8C0B0" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

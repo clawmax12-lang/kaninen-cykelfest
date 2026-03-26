@@ -1,0 +1,230 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Participants
+model Participant {
+  id            String   @id @default(cuid())
+  name          String
+  teamId        String?
+  role          String   @default("guest") // guest | host | admin
+  phone         String?
+  address       String?  // home address
+  dietary       String?  // allergies/dietary restrictions
+  confirmed     Boolean  @default(false) // has confirmed attendance
+  forratHost    String?  // name of host serving förrätt
+  varmrattHost  String?  // name of host serving varmrätt
+  efterrattHost String?  // name of host serving efterrätt
+  mission       String?  // special assignment / uppdrag during the event
+  accessCode    String   @unique
+  createdAt     DateTime @default(now())
+  team          Team?    @relation(fields: [teamId], references: [id])
+  pollVotes     PollVote[]
+}
+
+// Teams / Lag
+model Team {
+  id           String   @id @default(cuid())
+  name         String
+  theme        String?
+  hostAddress  String?
+  color        String?
+  createdAt    DateTime @default(now())
+  participants Participant[]
+  scores       Score[]
+  arrivals     TeamArrival[]
+}
+
+// Phases / Etapper
+model Phase {
+  id          String   @id @default(cuid())
+  name        String   // forrat, aktivitet_1, middag, aktivitet_2, efterratt, slutfest
+  label       String
+  detail      String?
+  unlockTime  String?  // ISO string for scheduled unlock
+  unlockedAt  DateTime?
+  orderIndex  Int
+  createdAt   DateTime @default(now())
+  scores      Score[]
+  arrivals    TeamArrival[]
+}
+
+// News / Nyheter
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  body        String
+  type        String   @default("info") // info | viktig | nyhet | omrostning
+  createdAt   DateTime @default(now())
+  publishedBy String?
+  pollId      String?  // Link to Poll when type=omrostning
+}
+
+// Videos from Kaninen
+model Video {
+  id              String   @id @default(cuid())
+  title           String
+  url             String
+  thumbnailUrl    String?
+  durationSeconds Int?
+  isNew           Boolean  @default(true)
+  publishedAt     DateTime @default(now())
+}
+
+// Polls / Omröstningar
+model Poll {
+  id            String    @id @default(cuid())
+  question      String
+  options       String    // JSON array of option strings
+  correctAnswer Int?      // 0-indexed index of correct option
+  closesAt      DateTime?
+  createdAt     DateTime  @default(now())
+  orderIndex    Int       @default(0)
+  votes         PollVote[]
+}
+
+model PollVote {
+  id            String      @id @default(cuid())
+  pollId        String
+  participantId String
+  optionIndex   Int
+  votedAt       DateTime    @default(now())
+  poll          Poll        @relation(fields: [pollId], references: [id], onDelete: Cascade)
+  participant   Participant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+  @@unique([pollId, participantId])
+}
+
+// Scores / Poäng
+model Score {
+  id        String   @id @default(cuid())
+  teamId    String
+  phaseId   String?
+  points    Int
+  reason    String   @default("")
+  awardedAt DateTime @default(now())
+  team      Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  phase     Phase?   @relation(fields: [phaseId], references: [id])
+  @@unique([teamId, reason])
+}
+
+// Team arrivals tracked by hosts
+model TeamArrival {
+  id         String    @id @default(cuid())
+  teamId     String
+  phaseId    String
+  arrivedAt  DateTime?
+  departedAt DateTime?
+  hostNote   String?
+  team       Team      @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  phase      Phase     @relation(fields: [phaseId], references: [id])
+  @@unique([teamId, phaseId])
+}
+
+// App settings / feature flags
+model AppSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+// Questions / Fråga kaninen
+model Question {
+  id          String   @id @default(cuid())
+  text        String
+  answer      String?
+  answeredAt  DateTime?
+  answeredBy  String?
+  createdAt   DateTime @default(now())
+}
+
+// Host Assignments / Värdskap
+model HostAssignment {
+  id            String    @id @default(cuid())
+  type          String    @default("meal") // "meal" | "task"
+  pin           String    @unique
+  hostNames     String    // e.g. "Sara & Magnus Lindqvist"
+  address       String?   // only for meal type
+  meal          String?   // e.g. "Förrätt", "Middag", "Efterrätt" — or task name
+  arrivalTime   String?   // e.g. "15:30"
+  hostNotes     String?   // Info från kaninen — message to the host pair
+  guestInfo     String?   // Info till gästerna — practical info for guests (parking etc)
+  pinSentAt     DateTime? // When PIN SMS was last sent
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  guests        HostGuest[]
+}
+
+model HostGuest {
+  id               String         @id @default(cuid())
+  assignmentId     String
+  participantName  String         // free text name, matched against participant list
+  dietary          String?        // allergy/dietary info
+  assignment       HostAssignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+}
+
+model ProgramStop {
+  id          String   @id
+  description String?
+  rules       String?
+  scoring     String?
+  updatedAt   DateTime @updatedAt
+}
+
+model Clue {
+  id         String   @id @default(cuid())
+  course     String   // "forrätt" | "varmrätt" | "efterrätt"
+  title      String
+  body       String
+  locked     Boolean  @default(true)
+  orderIndex Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model DestinationQuiz {
+  id          String                @id @default(cuid())
+  course      String                @unique  // "förrätt" | "varmrätt" | "efterrätt"
+  imageUrl    String?               // URL to the destination image
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+  questions   DestinationQuestion[]
+}
+
+model DestinationQuestion {
+  id            String          @id @default(cuid())
+  quizId        String
+  question      String
+  options       String          // JSON array of option strings
+  correctAnswer Int             // 0-indexed
+  orderIndex    Int             @default(0)
+  contentType   String          @default("text")  // "text" | "image" | "video"
+  contentText   String?         // used when contentType = "text"
+  contentUrl    String?         // used when contentType = "image" or "video"
+  createdAt     DateTime        @default(now())
+  quiz          DestinationQuiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+}
+
+model Feedback {
+  id            String   @id @default(cuid())
+  participantId String?  // optional link to participant
+  teamName      String?  // optional team name for display
+  q1            Int?     // Helhetsomdöme 1-5
+  q2            Int?     // Trivsel 1-5
+  q3            Int?     // Återkomma 1-5 (or yes/no as 1/0)
+  q4            Int?     // Uppdragets svårighetsgrad 1-5
+  comment       String?  // öppna kommentarer
+  submittedAt   DateTime @default(now())
+}
+
+model FeedbackQuestion {
+  id       String @id @default(cuid())
+  position Int    @unique  // 1-4
+  question String
+  options  String  // JSON array of option strings
+}

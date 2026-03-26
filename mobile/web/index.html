@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+    />
+    <title>Kaninens Cykelfest 2026</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Theme & status bar -->
+    <meta name="theme-color" content="#1C4F4A" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- iOS Safari PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Cykelfest" />
+    <link rel="apple-touch-icon" href="/icon-512.png" />
+
+    <!-- Splash screens for iOS (portrait) -->
+    <meta name="apple-mobile-web-app-orientations" content="portrait" />
+
+    <!-- Prevent address bar theming on Android Chrome -->
+    <meta name="msapplication-TileColor" content="#1C4F4A" />
+
+    <!-- The `react-native-web` recommended style reset -->
+    <style id="expo-reset">
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #1c4f4a;
+      }
+      body {
+        overflow: hidden;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>Du behöver aktivera JavaScript för att köra appen.</noscript>
+    <div id="root"></div>
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker
+            .register('/sw.js')
+            .then(function (reg) {
+              console.log('[PWA] Service Worker registrerad:', reg.scope);
+            })
+            .catch(function (err) {
+              console.log('[PWA] Service Worker misslyckades:', err);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
