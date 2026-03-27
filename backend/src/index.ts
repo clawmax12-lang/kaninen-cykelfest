@@ -37,6 +37,8 @@ const allowed = [
   /^https:\/\/[a-z0-9-]+\.dev\.vibecode\.run$/,
   /^https:\/\/[a-z0-9-]+\.vibecode\.dev$/,
   /^https:\/\/vibecode\.dev$/,
+  /^https:\/\/kaninenscykelfest\.com$/,
+  /^https:\/\/www\.kaninenscykelfest\.com$/,
 ];
 
 app.use(
