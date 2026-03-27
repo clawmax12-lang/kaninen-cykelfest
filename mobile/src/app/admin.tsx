@@ -1305,8 +1305,6 @@ export default function AdminScreen() {
     { name: 'Kryssning',        emoji: '🚢' },
     { name: 'Alpresa',          emoji: '🎿' },
     { name: 'Club 33',          emoji: '🍹' },
-    { name: 'Storstadsweekend', emoji: '🏙️' },
-    { name: 'Fotbollsresa',     emoji: '⚽' },
   ];
 
   // fetchedTeams: list of { id, name } for teams that exist in the db

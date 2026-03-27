@@ -19,8 +19,6 @@ const TEAM_INFO: Record<string, { emoji: string; colors: [string, string]; descr
   'Kryssning':          { emoji: '🚢',  colors: ['#1A4A6A', '#0A3A5A'], description: 'Buffén är öppen dygnet runt, underhållningen börjar om en timme och däcket erbjuder den vackraste solnedgången på Östersjön. Kryssningslaget vet hur man lever.' },
   'Alpresa':            { emoji: '🎿',  colors: ['#3A4A6A', '#2A3A5A'], description: 'Pistkortet hänger runt halsen, après-skiden väntar i dalen och snön är perfekt packad. Alpreselaget åker utför med stil — och reser sig lika stiligt om det går snett.' },
   'Club 33':            { emoji: '🍹',  colors: ['#6A2A3A', '#5A1A2A'], description: 'Det räcker med 33 grader, en pool och ett bra sällskap. Club 33 vet att den bästa semestern inte kräver ett program — bara rätt människor på rätt plats.' },
-  'Storstadsweekend':   { emoji: '🏙️',  colors: ['#5A2A7A', '#3A1A5A'], description: 'Hotellrummet syns knappt för alla shoppingpåsar och teaterbiljetterna ligger redo på nattduksbordet. Storstadsweekend-laget lever i storstadens puls — och älskar varje sekund.' },
-  'Fotbollsresa':       { emoji: '⚽',  colors: ['#7A1A1A', '#5A0A0A'], description: 'Matchtröjan är på, halsduken är vikt och den legendomspunna arenan glänser i kvällsljuset. Fotbollsreselaget har rest halva Europa för att se det perfekta målet — live.' },
 };
 
 type BackendTeam = {

@@ -153,6 +153,60 @@ cykelfestRouter.get("/phases", async (c) => {
   return c.json({ data: phases });
 });
 
+cykelfestRouter.post("/phases", async (c) => {
+  const body = await c.req.json();
+  const phase = await prisma.phase.create({ data: body });
+  return c.json({ data: phase });
+});
+
+// POST /setup — idempotent seed of required initial data (phases + teams)
+cykelfestRouter.post("/setup", async (c) => {
+  const PHASE_DEFS = [
+    { name: "forrat", label: "Förrätt", orderIndex: 0 },
+    { name: "aktivitet_1", label: "Aktivitet 1", orderIndex: 1 },
+    { name: "middag", label: "Middag", orderIndex: 2 },
+    { name: "aktivitet_2", label: "Aktivitet 2", orderIndex: 3 },
+    { name: "efterratt", label: "Efterrätt", orderIndex: 4 },
+    { name: "slutfest", label: "Slutfest", orderIndex: 5 },
+  ];
+  const TEAM_DEFS = ["Charter", "Safari", "Fjällvandring", "Tågluff", "Camping", "Träningsresa", "Backpacking", "Kryssning", "Alpresa", "Club 33"];
+
+  // Seed phases (skip if already exist by name)
+  const existingPhases = await prisma.phase.findMany();
+  const existingNames = new Set(existingPhases.map((p) => p.name));
+  const phasesCreated = [];
+  for (const p of PHASE_DEFS) {
+    if (!existingNames.has(p.name)) {
+      const created = await prisma.phase.create({ data: p });
+      phasesCreated.push(created);
+    }
+  }
+
+  // Seed teams (skip if name already exists)
+  const existingTeams = await prisma.team.findMany();
+  const existingTeamNames = new Set(existingTeams.map((t) => t.name));
+  const teamsCreated = [];
+  for (const name of TEAM_DEFS) {
+    if (!existingTeamNames.has(name)) {
+      const created = await prisma.team.create({ data: { name } });
+      teamsCreated.push(created);
+    }
+  }
+
+  // Create destination quiz containers for each course if missing
+  const COURSES = ["förrätt", "varmrätt", "efterrätt"];
+  const quizzesCreated = [];
+  for (const course of COURSES) {
+    const existing = await prisma.destinationQuiz.findUnique({ where: { course } });
+    if (!existing) {
+      const created = await prisma.destinationQuiz.create({ data: { course } });
+      quizzesCreated.push(created);
+    }
+  }
+
+  return c.json({ data: { phasesCreated: phasesCreated.length, teamsCreated: teamsCreated.length, quizzesCreated: quizzesCreated.length } });
+});
+
 cykelfestRouter.post("/phases/:id/unlock", async (c) => {
   const id = c.req.param("id");
   const phase = await prisma.phase.update({
@@ -242,6 +296,12 @@ cykelfestRouter.post("/teams", async (c) => {
   const body = await c.req.json();
   const team = await prisma.team.create({ data: body });
   return c.json({ data: team });
+});
+
+cykelfestRouter.delete("/teams/:id", async (c) => {
+  const id = c.req.param("id");
+  await prisma.team.delete({ where: { id } });
+  return c.json({ data: { ok: true } });
 });
 
 // ---- PARTICIPANTS ----
@@ -404,10 +464,19 @@ cykelfestRouter.delete("/polls/:id", async (c) => {
 cykelfestRouter.post("/polls/:id/vote", async (c) => {
   const id = c.req.param("id");
   const body = await c.req.json();
+  const deviceId = body.participantId ?? body.voterId;
+  if (!deviceId) return c.json({ error: { message: "participantId required" } }, 400);
+  // Find or create an anonymous participant keyed by device UUID (accessCode)
+  let participant = await prisma.participant.findUnique({ where: { accessCode: deviceId } });
+  if (!participant) {
+    participant = await prisma.participant.create({
+      data: { name: "Anonym", accessCode: deviceId, role: "guest" },
+    });
+  }
   const vote = await prisma.pollVote.upsert({
-    where: { pollId_participantId: { pollId: id, participantId: body.participantId } },
+    where: { pollId_participantId: { pollId: id, participantId: participant.id } },
     update: { optionIndex: body.optionIndex },
-    create: { pollId: id, participantId: body.participantId, optionIndex: body.optionIndex },
+    create: { pollId: id, participantId: participant.id, optionIndex: body.optionIndex },
   });
   return c.json({ data: vote });
 });
@@ -1298,7 +1367,7 @@ cykelfestRouter.put("/host-assignments/:id/guests", async (c) => {
 
 // ---- IMPORT ----
 
-const TEAM_OPTIONS = ["Charter", "Safari", "Fjällvandring", "Tågluff", "Camping", "Träningsresa", "Backpacking", "Kryssning", "Alpresa", "Club 33", "Storstadsweekend", "Fotbollsresa"];
+const TEAM_OPTIONS = ["Charter", "Safari", "Fjällvandring", "Tågluff", "Camping", "Träningsresa", "Backpacking", "Kryssning", "Alpresa", "Club 33"];
 const MEAL_OPTIONS = ["Förrätt", "Varmrätt", "Efterrätt"];
 
 // GET /import/template — generate and return .xlsx template

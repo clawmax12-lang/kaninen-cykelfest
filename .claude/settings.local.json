@@ -85,7 +85,22 @@
       "Edit(/.claude/skills/ai-apis-like-chatgpt/**)",
       "Edit(/.claude/skills/upload-assets/**)",
       "Edit(/.claude/skills/frontend-app-design/**)",
-      "Bash(ls /Users/maxagent/Documents/Kaninen-web/mobile/src/app/\\\\\\(tabs\\\\\\)/)"
+      "Bash(ls /Users/maxagent/Documents/Kaninen-web/mobile/src/app/\\\\\\(tabs\\\\\\)/)",
+      "Bash(bun src/seed-quiz.ts)",
+      "Bash(ls /Users/maxagent/Documents/Kaninen-web/backend/.env*)",
+      "Bash(echo \"BACKEND_URL=$BACKEND_URL\")",
+      "Bash(cat /Users/maxagent/Documents/Kaninen-web/mobile/.env*)",
+      "Bash(ls /Users/maxagent/Documents/Kaninen-web/mobile/.env*)",
+      "Bash(curl -s \"https://kaninen-cykelfest-api.vercel.app/api/cykelfest/polls\")",
+      "Bash(python3 -c \":*)",
+      "Bash(curl -sv \"https://kaninen-cykelfest-api.vercel.app/api/cykelfest/polls\")",
+      "Bash(npx vercel:*)",
+      "Bash(curl -s \"https://kaninen-cykelfest-api.vercel.app/api/cykelfest/settings\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(''''Backend OK''''\\)\")",
+      "Bash(curl -s \"https://kaninen-cykelfest-krj8izdw0-clawmax12-langs-projects.vercel.app/api/cykelfest/polls\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(''''✓ Backend live, polls:'''', len\\(d.get\\(''''data'''',[]\\)\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(''''✓ polls:'''', len\\(d.get\\(''''data'''',[]\\)\\)\\)\")",
+      "Bash(curl -s https://kaninen-cykelfest-api.vercel.app/api/cykelfest/polls)"
     ],
     "additionalDirectories": [
       "/Users/maxagent/Documents/Kaninen-web/.claude/skills"

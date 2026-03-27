@@ -48,6 +48,10 @@ function RootLayoutNav() {
         <Stack.Screen name="destination-quiz" options={{ headerShown: false }} />
         <Stack.Screen name="aterkoppling" options={{ headerShown: false }} />
         <Stack.Screen name="program/[id]" options={{ headerShown: false }} />
+        <Stack.Screen name="mitt-lag" options={{ headerShown: false }} />
+        <Stack.Screen name="lag/[name]" options={{ headerShown: false }} />
+        <Stack.Screen name="nyhet/[id]" options={{ headerShown: false }} />
+        <Stack.Screen name="gast-lookup" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
         <Stack.Screen name="+not-found" />
       </Stack>

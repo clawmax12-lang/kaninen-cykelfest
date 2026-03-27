@@ -25,8 +25,6 @@ const TEAM_THEMES: Record<string, { emoji: string; color: string }> = {
   Kryssning:          { emoji: '🚢',  color: '#2980B9' },
   Alpresa:            { emoji: '🎿',  color: '#BDC3C7' },
   'Club 33':          { emoji: '🍹',  color: '#E91E63' },
-  Storstadsweekend:   { emoji: '🏙',  color: '#8E44AD' },
-  Fotbollsresa:       { emoji: '⚽',  color: '#C0392B' },
 };
 
 const MOCK_PHASE_IDS = ['deltavling-1', 'deltavling-2', 'deltavling-3'];

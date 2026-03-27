@@ -12,6 +12,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ChevronLeft, Search, X } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, {
@@ -37,8 +38,6 @@ const TEAMS = [
   { name: 'Kryssning',        emoji: '🚢',  colors: ['#1F618D', '#154360'] as [string, string] },
   { name: 'Alpresa',          emoji: '🎿',  colors: ['#717D7E', '#4D5656'] as [string, string] },
   { name: 'Club 33',          emoji: '🍹',  colors: ['#B03A6B', '#8E2456'] as [string, string] },
-  { name: 'Storstadsweekend', emoji: '🏙️', colors: ['#6C3483', '#4A235A'] as [string, string] },
-  { name: 'Fotbollsresa',     emoji: '⚽',  colors: ['#922B21', '#641E16'] as [string, string] },
 ];
 
 // Fallback static participants spread evenly across teams
@@ -188,6 +187,7 @@ function TeamCard({ team, index, highlighted, dimmed, cardWidth, onPress }: Team
 // ---- Main screen ----
 export default function MittLagScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { width: screenW } = useWindowDimensions();
   const cardWidth = screenW - 48;
   const [query, setQuery] = useState<string>('');
@@ -242,8 +242,8 @@ export default function MittLagScreen() {
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <LinearGradient colors={['#1A3A2A', '#2A4A3A']} style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
+      <LinearGradient colors={['#1A3A2A', '#2A4A3A']} style={[styles.header, { paddingTop: insets.top + 16 }]}>
+        <TouchableOpacity onPress={() => router.back()} style={[styles.backBtn, { top: insets.top + 14 }]}>
           <ChevronLeft size={22} color="#A8D4B8" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Mitt lag</Text>
@@ -344,7 +344,7 @@ export default function MittLagScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#FAF7F2' },
   header: {
-    paddingTop: 60,
+    paddingTop: 16,
     paddingBottom: 28,
     paddingHorizontal: 20,
     alignItems: 'center',
@@ -352,7 +352,7 @@ const styles = StyleSheet.create({
   backBtn: {
     position: 'absolute',
     left: 16,
-    top: 58,
+    top: 14,
     width: 44,
     height: 44,
     borderRadius: 22,

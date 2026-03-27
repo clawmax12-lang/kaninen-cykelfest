@@ -32,6 +32,11 @@ const allowed = [
   /^http:\/\/127\.0\.0\.1(:\d+)?$/,
   /^https:\/\/[a-z0-9-]+\.vercel\.app$/,
   /^https:\/\/[a-z0-9-]+\.github\.io$/,
+  /^https:\/\/[a-z0-9-]+\.vibecodeapp\.com$/,
+  /^https:\/\/[a-z0-9-]+\.vibecode\.run$/,
+  /^https:\/\/[a-z0-9-]+\.dev\.vibecode\.run$/,
+  /^https:\/\/[a-z0-9-]+\.vibecode\.dev$/,
+  /^https:\/\/vibecode\.dev$/,
 ];
 
 app.use(
@@ -169,8 +174,9 @@ app.get("/manual", async (c) => {
 app.route("/api/sample", sampleRouter);
 app.route("/api/cykelfest", cykelfestRouter);
 
-const UPLOADS_DIR = backendFile("uploads");
-mkdirSync(UPLOADS_DIR, { recursive: true });
+// Use /tmp on Vercel (read-only FS), local uploads/ otherwise
+const UPLOADS_DIR = process.env.VERCEL ? "/tmp/uploads" : backendFile("uploads");
+try { mkdirSync(UPLOADS_DIR, { recursive: true }); } catch { /* read-only env, skip */ }
 
 app.post("/api/upload", async (c) => {
   const formData = await c.req.formData();
@@ -214,7 +220,7 @@ app.get("/uploads/:filename", async (c) => {
     mov: "video/quicktime", pdf: "application/pdf",
   };
   const contentType = mimeMap[ext] || "application/octet-stream";
-  return new Response(buf, { headers: { "Content-Type": contentType, "Cache-Control": "public, max-age=31536000" } });
+  return new Response(new Uint8Array(buf), { headers: { "Content-Type": contentType, "Cache-Control": "public, max-age=31536000" } });
 });
 
 export { app };

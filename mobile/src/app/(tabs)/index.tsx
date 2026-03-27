@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { getDeviceVoterId } from '@/lib/deviceId';
 import {
   View,
   Text,
   ScrollView,
-  FlatList,
   TouchableOpacity,
   Pressable,
   StyleSheet,
   Dimensions,
   TextInput,
-  KeyboardAvoidingView,
   Platform,
   Linking,
 } from 'react-native';
-import { ChevronRight, Lock, Home } from 'lucide-react-native';
+import { ChevronRight, Home } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -25,7 +25,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useVideoPlayer, VideoView } from 'expo-video';
-const IS_WEB = Platform.OS === 'web';
 import * as Haptics from 'expo-haptics';
 import { useAppStore } from '@/lib/state/store';
 import { useData } from '@/lib/hooks/useData';
@@ -78,7 +77,8 @@ function formatDate(dateStr: string): string {
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { fetchAll, error: dataError, refetch, isLoading } = useData();
+  const insets = useSafeAreaInsets();
+  const { error: dataError, refetch } = useData();
   const { isOffline } = useNetworkStatus();
   const news = useAppStore((s) => s.news);
   const videos = useAppStore((s) => s.videos);
@@ -87,7 +87,6 @@ export default function HomeScreen() {
   const teams = useAppStore((s) => s.teams);
   const phases = useAppStore((s) => s.phases);
   const scores = useAppStore((s) => s.scores);
-  const participant = useAppStore((s) => s.participant);
   const settings = useAppStore((s) => s.settings);
 
   const videoPlayer = useVideoPlayer(
@@ -225,9 +224,7 @@ export default function HomeScreen() {
     ? (() => { try { return JSON.parse(activePoll.options) as string[]; } catch { return []; } })()
     : [];
   const pollVotes = activePoll?.votes ?? [];
-  const myVote = participant != null
-    ? (pollVotes.find((v) => v.participantId === participant.id) ?? null)
-    : null;
+  const myVote = null; // votes tracked locally via userAnswers
   const totalVotes = pollVotes.length;
   const hasVoted = userAnswers[activePoll?.id ?? ''] !== undefined;
 
@@ -238,23 +235,18 @@ export default function HomeScreen() {
 
   async function handleVote(choice: number) {
     if (!activePoll) return;
-    // Always record answer locally
     const newAnswers = { ...userAnswers, [activePoll.id]: choice };
     setUserAnswers(newAnswers);
     setPollVoteError(null);
-    // Submit to backend only if logged in
-    if (participant) {
-      try {
-        await api.post(`/api/cykelfest/polls/${activePoll.id}/vote`, {
-          participantId: participant.id,
-          optionIndex: choice,
-        });
-      } catch (e) {
-        console.error('Vote error:', e);
-        setPollVoteError('Kunde inte spara rösten. Försök igen.');
-      }
-    } else {
-      setPollVoteError('Du måste vara inloggad för att rösta.');
+    try {
+      const voterId = await getDeviceVoterId();
+      await api.post(`/api/cykelfest/polls/${activePoll.id}/vote`, {
+        participantId: voterId,
+        optionIndex: choice,
+      });
+    } catch (e) {
+      console.error('Vote error:', e);
+      setPollVoteError('Kunde inte spara rösten. Försök igen.');
     }
     return newAnswers;
   }
@@ -288,7 +280,7 @@ export default function HomeScreen() {
         </View>
       ) : null}
       {/* HEADER */}
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
         <View style={styles.headerTexture} pointerEvents="none">
           {Array.from({ length: 30 }).map((_, i) => (
             <View key={i} style={[styles.textureStripe, { left: i * 26 - 200 }]} />
@@ -655,14 +647,14 @@ export default function HomeScreen() {
               const myAns = userAnswers[poll.id];
               return myAns !== undefined && poll.correctAnswer !== null && myAns === poll.correctAnswer;
             }).length;
-            // Gather all participant IDs who have voted in this quiz
-            const allParticipantIds = new Set<string>();
-            polls.forEach((poll) => poll.votes?.forEach((v) => allParticipantIds.add(v.participantId)));
-            const otherIds = Array.from(allParticipantIds).filter((id) => id !== participant?.id);
-            if (otherIds.length === 0) {
-              return <Text style={styles.pollDoneSub}>Du är först att svara – fler resultat visas snart!</Text>;
+            // Gather all voter IDs who have voted in this quiz
+            const allVoterIds = new Set<string>();
+            polls.forEach((poll) => poll.votes?.forEach((v) => allVoterIds.add(v.participantId)));
+            const otherIds = Array.from(allVoterIds);
+            if (otherIds.length <= 1) {
+              return <Text style={styles.pollDoneSub}>Du är bland de första att svara – fler resultat visas snart!</Text>;
             }
-            // Score per other participant
+            // Score per voter
             const otherScores = otherIds.map((pid) =>
               polls.filter((poll) => {
                 const vote = poll.votes?.find((v) => v.participantId === pid);
@@ -969,7 +961,7 @@ const styles = StyleSheet.create({
   // HEADER
   header: {
     backgroundColor: '#1C4F4A',
-    paddingTop: 60,
+    paddingTop: 16,
     paddingBottom: 24,
     paddingHorizontal: 22,
     position: 'relative',
