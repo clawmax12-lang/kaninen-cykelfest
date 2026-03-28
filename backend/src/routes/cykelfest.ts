@@ -916,7 +916,7 @@ cykelfestRouter.get("/participants/confirmation-status", async (c) => {
   const nameToPinMap = new Map<string, string>();
   for (const ha of hostAssignments) {
     if (!ha.pin || !ha.hostNames) continue;
-    const names = ha.hostNames.split(/\s*&\s*/);
+    const names = ha.hostNames.split(/\s*;\s*/);
     for (const name of names) {
       nameToPinMap.set(normalizeName(name), ha.pin);
     }
@@ -992,7 +992,7 @@ cykelfestRouter.get("/host-assignments", async (c) => {
       );
     }
     // Filtrera bort värdarna själva från gästlistan
-    const hostNamesList = a.hostNames.split(/\s*&\s*/).map((n) => normalizeName(n));
+    const hostNamesList = a.hostNames.split(/\s*;\s*/).map((n) => normalizeName(n));
     const guests = guestParticipants
       .filter((p) => !hostNamesList.includes(normalizeName(p.name)))
       .map((p) => ({ participantName: p.name, dietary: p.dietary }));
@@ -1050,7 +1050,7 @@ cykelfestRouter.get("/host-assignments/by-guest/:name", async (c) => {
           orderBy: { name: "asc" },
         }) as { name: string; dietary: string | null }[];
         // Filtrera bort värdarna själva från gästlistan
-        const hostNamesList = hostNames.split(/\s*&\s*/).map((n: string) => normalizeName(n));
+        const hostNamesList = hostNames.split(/\s*;\s*/).map((n: string) => normalizeName(n));
         guests = participants
           .filter((p) => !hostNamesList.includes(normalizeName(p.name)))
           .map((p) => ({ participantName: p.name, dietary: p.dietary }));
@@ -1110,7 +1110,7 @@ cykelfestRouter.get("/host-assignments/by-pin/:pin", async (c) => {
         orderBy: { name: "asc" },
       }) as { name: string; dietary: string | null }[];
       // Filtrera bort värdarna själva från gästlistan
-      const hostNamesList = assignment.hostNames.split(/\s*&\s*/).map((n: string) => normalizeName(n));
+      const hostNamesList = assignment.hostNames.split(/\s*;\s*/).map((n: string) => normalizeName(n));
       guests = participants
         .filter((p) => !hostNamesList.includes(normalizeName(p.name)))
         .map((p) => ({ participantName: p.name, dietary: p.dietary }));
@@ -1202,7 +1202,7 @@ cykelfestRouter.put("/host-assignments/:id", async (c) => {
         orderBy: { name: "asc" },
       }) as { name: string; dietary: string | null }[];
       // Filtrera bort värdarna själva från gästlistan
-      const hostNamesList = updatedHostNames.split(/\s*&\s*/).map((n: string) => normalizeName(n));
+      const hostNamesList = updatedHostNames.split(/\s*;\s*/).map((n: string) => normalizeName(n));
       guests = participants
         .filter((p) => !hostNamesList.includes(normalizeName(p.name)))
         .map((p) => ({ participantName: p.name, dietary: p.dietary }));
