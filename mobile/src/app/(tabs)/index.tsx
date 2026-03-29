@@ -970,10 +970,11 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E5DFD1',
+    backgroundColor: '#1C4F4A',
   },
   content: {
     paddingBottom: 20,
+    backgroundColor: '#E5DFD1',
   },
 
   // HEADER
