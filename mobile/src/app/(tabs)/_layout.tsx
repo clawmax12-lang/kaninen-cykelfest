@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
   navOuter: {
     borderTopWidth: 1,
     borderTopColor: 'rgba(0,0,0,0.08)',
-    paddingTop: 2,
+    paddingTop: 10,
     paddingHorizontal: 8,
     backgroundColor: '#F5EFE0',
     overflow: 'hidden',
