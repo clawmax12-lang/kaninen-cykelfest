@@ -213,7 +213,7 @@ function BottomNav() {
   };
 
   return (
-    <View style={[styles.navOuter, { paddingBottom: Math.max(0, insets.bottom - 28) }]}>
+    <View style={[styles.navOuter, { paddingBottom: Math.max(insets.bottom, 16) }]}>
       {Platform.OS === 'web' ? (
         <View style={[StyleSheet.absoluteFill, { backgroundColor: '#F5EFE0' }]} />
       ) : (
