@@ -137,9 +137,9 @@ const styles = StyleSheet.create({
   },
   dateHeading: {
     fontFamily: 'DMSerifDisplay_400Regular',
-    fontSize: 18,
+    fontSize: 26,
     color: '#4A4030',
-    marginBottom: 10,
+    marginBottom: 18,
   },
   card: {
     borderRadius: 12,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     fontFamily: 'DMSans_600SemiBold',
     fontSize: 15,
     letterSpacing: 0,
-    color: '#3A3328',
+    color: '#9A8E78',
     marginBottom: 6,
   },
   cardRow: {
