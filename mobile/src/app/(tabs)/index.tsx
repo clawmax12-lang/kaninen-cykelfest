@@ -188,12 +188,14 @@ export default function HomeScreen() {
   const [questionInput, setQuestionInput] = useState('');
   const [questionSending, setQuestionSending] = useState(false);
   const [faqHasNewAnswer, setFaqHasNewAnswer] = useState(false);
+  const [faqCount, setFaqCount] = useState(0);
 
   useEffect(() => {
     async function checkNewAnswers() {
       try {
         const lastSeen = await AsyncStorage.getItem('faq_last_seen');
         const questions = await api.get<{ id: string; answeredAt: string | null }[]>('/api/cykelfest/questions');
+        setFaqCount((questions ?? []).filter(q => q.answeredAt).length);
         const hasNew = (questions ?? []).some(q =>
           q.answeredAt && (!lastSeen || new Date(q.answeredAt) > new Date(lastSeen))
         );
@@ -871,7 +873,7 @@ export default function HomeScreen() {
             testID="faq-row-button"
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
-              <Text style={styles.faqRowBtnText}>Se frågor & svar till kaninen</Text>
+              <Text style={styles.faqRowBtnText}>Se frågor & svar till kaninen{faqCount > 0 ? ` (${faqCount})` : ''}</Text>
             </View>
             <Text style={styles.faqRowBtnArrow}>→</Text>
           </TouchableOpacity>
