@@ -126,7 +126,7 @@ export default function KalendariumScreen() {
       status: steg2Unlocked ? 'active' : 'locked',
       icon: '2',
       title: 'Bekräfta anmälan',
-      sub: steg2Unlocked ? 'Bekräftelse av deltagande senast den 10 april' : 'Ännu inte tillgänglig',
+      sub: steg2Unlocked ? 'Bekräfta ditt deltagande' : 'Ännu inte tillgänglig',
       badge: steg2Unlocked ? 'Öppet' : 'Kommande',
       route: steg2Unlocked ? '/bekraftad-anmalan' : undefined,
     },
