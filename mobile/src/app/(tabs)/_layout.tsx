@@ -21,7 +21,7 @@ function seenKey(course: string) {
 }
 
 // DEBUG: set to true to unlock all tabs for testing
-const DEBUG_UNLOCK_ALL = false;
+
 
 type TabItem = {
   name: string;
@@ -195,7 +195,6 @@ function BottomNav() {
 
   const isTabUnlocked = (tab: TabItem) => {
     if (tab.alwaysActive) return true;
-    if (DEBUG_UNLOCK_ALL) return true;
     if (tab.name === 'schema') return schemaUnlocked;
     if (tab.name === 'ledtrad') return ledtradUnlocked;
     if (tab.name === 'poang') return poangUnlocked;

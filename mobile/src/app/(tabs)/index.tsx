@@ -34,8 +34,9 @@ import { useNetworkStatus } from '@/lib/hooks/useNetworkStatus';
 
 const READ_KEY = 'read_news_ids';
 
-function isNew(_dateStr: string): boolean {
-  return true;
+function isNew(dateStr: string): boolean {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  return diff < 48 * 60 * 60 * 1000; // 48 hours
 }
 
 const { width: SCREEN_W } = Dimensions.get('window');
@@ -524,7 +525,7 @@ export default function HomeScreen() {
           <View style={styles.timelineContent}>
             <Text style={steg2Unlocked ? styles.timelineTitleActive : styles.timelineTitle}>Bekräfta anmälan</Text>
             <Text style={steg2Unlocked ? styles.timelineSubActive : styles.timelineSub} numberOfLines={1}>
-              {steg2Unlocked ? 'Bekräftelse av deltagande senast den 10 april' : 'Ännu inte tillgänglig'}
+              {steg2Unlocked ? 'Bekräfta ditt deltagande' : 'Ännu inte tillgänglig'}
             </Text>
           </View>
           <View style={styles.timelineRowRight}>

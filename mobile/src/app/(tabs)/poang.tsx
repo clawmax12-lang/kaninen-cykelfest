@@ -281,16 +281,12 @@ export default function PoangScreen() {
   const { width: screenWidth } = useWindowDimensions();
   const { isLoading, error, refetch } = useData();
 
-  const DEBUG_SHOW_SCORES = true;
   const isUnlocked =
-    DEBUG_SHOW_SCORES ||
     phases.some((p) => p.name === 'aktivitet_1' && p.unlockedAt != null);
 
   // Använd riktiga lag alltid om de finns, mockdata bara om inga lag finns alls
-  const useMock = storeTeams.length === 0;
-  const mock = useMock ? buildMockData() : { teams: storeTeams, scores: storeScores };
-  const activeTeams = mock.teams;
-  const activeScores = mock.scores;
+  const activeTeams = storeTeams;
+  const activeScores = storeScores;
 
   // Collect unique phase keys from scores — use reason field as discriminator
   const allPhaseIds = Array.from(

@@ -117,8 +117,8 @@ function buildParticipantMap(
     }
   }
 
-  // 3. Fallback static data
-  return FALLBACK_PARTICIPANTS;
+  // 3. No data available
+  return [];
 }
 
 // ---- Animated team card ----
