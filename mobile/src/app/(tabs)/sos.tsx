@@ -22,7 +22,7 @@ export default function SOSScreen() {
       {/* Header */}
       <LinearGradient colors={['#8B1A1A', '#C0392B']} style={[styles.header, { paddingTop: insets.top + 8 }]}>
         <Text style={styles.headerEyebrow}>KANINENS CYKELFEST 2026</Text>
-        <Text style={styles.headerTitle}>SOS</Text>
+        <Text style={styles.headerTitle}>Hjälp</Text>
       </LinearGradient>
 
       {/* Ring arrangören */}
@@ -42,67 +42,7 @@ export default function SOSScreen() {
         </PressableScale>
       </View>
 
-      {/* Kontakter */}
-      <View style={styles.section}>
-        <Text style={styles.sectionLabel}>NÖDKONTAKTER</Text>
-        <View style={styles.card}>
-          <PressableScale
-            style={[styles.contactRow, { backgroundColor: '#FFF0F0' }]}
-            onPress={() => Linking.openURL(`tel:${contact1Number}`)}
-            testID="call-112"
-          >
-            <View style={styles.contactInfo}>
-              <Text style={styles.contactName}>{contact1Name}</Text>
-              <Text style={styles.contactNum}>När det är fara för liv</Text>
-            </View>
-            <View style={[styles.contactIconSmall, { backgroundColor: '#FFE5E5' }]}>
-              <Phone size={16} color="#C0392B" />
-            </View>
-          </PressableScale>
 
-          <View style={styles.contactDivider} />
-
-          <PressableScale
-            style={styles.contactRow}
-            onPress={() => Linking.openURL(`tel:${contact2Number}`)}
-            testID="call-organizer"
-          >
-            <View style={styles.contactInfo}>
-              <Text style={styles.contactName}>{contact2Name}</Text>
-              <Text style={styles.contactNum}>När du är lost</Text>
-            </View>
-            <View style={[styles.contactIconSmall, { backgroundColor: '#E5F0FF' }]}>
-              <Phone size={16} color="#2A5FA8" />
-            </View>
-          </PressableScale>
-
-          <View style={styles.contactDivider} />
-
-          <PressableScale
-            style={styles.contactRow}
-            onPress={() => Linking.openURL(`tel:${contact3Number}`)}
-            testID="call-taxi"
-          >
-            <View style={styles.contactInfo}>
-              <Text style={styles.contactName}>{contact3Name}</Text>
-              <Text style={styles.contactNum}>När du är på andra sidan stan</Text>
-            </View>
-            <View style={[styles.contactIconSmall, { backgroundColor: '#FFF8E5' }]}>
-              <Phone size={16} color="#C4814A" />
-            </View>
-          </PressableScale>
-        </View>
-      </View>
-
-      {/* Info */}
-      <View style={styles.section}>
-        <View style={[styles.card, styles.infoCard]}>
-          <AlertTriangle size={20} color="#C4814A" />
-          <Text style={styles.infoText}>
-            Denna skärm är alltid tillgänglig oavsett om appen är låst eller inte. Ring alltid 112 vid fara för liv.
-          </Text>
-        </View>
-      </View>
 
     </ScrollView>
   );
