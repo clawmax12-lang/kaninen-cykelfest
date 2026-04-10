@@ -64,14 +64,11 @@ export default function ProgramDetailScreen() {
   const [backendStops, setBackendStops] = useState<Record<string, { description?: string; rules?: string; scoring?: string }>>({});
 
   useEffect(() => {
-    const baseUrl = process.env.EXPO_PUBLIC_BACKEND_URL;
-    if (!baseUrl) return;
-    fetch(`${baseUrl}/api/cykelfest/program-stops`)
-      .then((res) => res.json())
-      .then((json) => {
-        const arr: { id: string; description?: string; rules?: string; scoring?: string }[] = json?.data ?? json ?? [];
+    api.get<{ id: string; description?: string; rules?: string; scoring?: string }[]>('/api/cykelfest/program-stops')
+      .then((arr) => {
+        const list = Array.isArray(arr) ? arr : [];
         const record: Record<string, { description?: string; rules?: string; scoring?: string }> = {};
-        for (const item of arr) {
+        for (const item of list) {
           record[item.id] = {
             description: item.description || undefined,
             rules: item.rules || undefined,
@@ -132,7 +129,13 @@ export default function ProgramDetailScreen() {
     );
   }
 
-  const merged = { ...stop, ...backendStops[stop.id] };
+  const backendData = backendStops[stop.id] ?? {};
+  const merged = {
+    ...stop,
+    description: backendData.description || stop.description || (stop as any).hiddenText || stop.label,
+    rules: backendData.rules || stop.rules,
+    scoring: backendData.scoring || stop.scoring,
+  };
 
   const cardBg =
     stop.cardType === 'activity'
