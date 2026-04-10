@@ -79,6 +79,23 @@ export default function RootLayout() {
     }
   }, [fontsLoaded]);
 
+  // Web: set body/html background and iOS PWA status bar meta tags
+  useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    document.body.style.backgroundColor = '#1C4F4A';
+    document.documentElement.style.backgroundColor = '#1C4F4A';
+    // iOS PWA status bar
+    const addMeta = (name: string, content: string) => {
+      if (!document.querySelector(`meta[name="${name}"]`)) {
+        const m = document.createElement('meta');
+        m.name = name; m.content = content;
+        document.head.appendChild(m);
+      }
+    };
+    addMeta('apple-mobile-web-app-capable', 'yes');
+    addMeta('apple-mobile-web-app-status-bar-style', 'black-translucent');
+  }, []);
+
   if (!fontsLoaded && Platform.OS !== 'web') return null;
 
   return (

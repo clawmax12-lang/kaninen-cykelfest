@@ -277,12 +277,17 @@ export default function PoangScreen() {
   const insets = useSafeAreaInsets();
   const storeScores = useAppStore((s) => s.scores);
   const storeTeams = useAppStore((s) => s.teams);
-  const phases = useAppStore((s) => s.phases);
+  const settings = useAppStore((s) => s.settings);
   const { width: screenWidth } = useWindowDimensions();
   const { isLoading, error, refetch } = useData();
 
-  const isUnlocked =
-    phases.some((p) => p.name === 'aktivitet_1' && p.unlockedAt != null);
+  const isUnlocked = (() => {
+    const val = settings['unlock_poang'];
+    if (!val) return false;
+    const n = new Date();
+    const nowStr = `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}T${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
+    return nowStr >= val;
+  })();
 
   // Använd riktiga lag alltid om de finns, mockdata bara om inga lag finns alls
   const activeTeams = storeTeams;

@@ -26,11 +26,11 @@ function CardDescription({ stop }: { stop: ProgramStop }) {
 export default function SchemaScreen() {
   const insets = useSafeAreaInsets();
   const settings = useAppStore((s) => s.settings);
-  const todayStr = new Date().toISOString().split('T')[0];
+  const nowStr = (() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}T${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`; })();
 
-  const forratUnlocked    = settings['unlock_steg5'] ? todayStr >= settings['unlock_steg5'] : false;
-  const middagUnlocked    = settings['unlock_steg7'] ? todayStr >= settings['unlock_steg7'] : false;
-  const efterrattUnlocked = settings['unlock_steg8'] ? todayStr >= settings['unlock_steg8'] : false;
+  const forratUnlocked    = settings['unlock_steg5'] ? nowStr >= settings['unlock_steg5'] : false;
+  const middagUnlocked    = settings['unlock_steg7'] ? nowStr >= settings['unlock_steg7'] : false;
+  const efterrattUnlocked = settings['unlock_steg8'] ? nowStr >= settings['unlock_steg8'] : false;
 
   const isUnlocked = (stopId: string) => {
     if (stopId === 'forrat')    return forratUnlocked;
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   timeLabel: {
     fontFamily: 'DMSans_600SemiBold',
-    fontSize: 15,
+    fontSize: 18,
     letterSpacing: 0,
     color: '#3A3328',
     marginBottom: 6,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     flexShrink: 0,
   },
   cardLock: {
-    fontSize: 14,
+    fontSize: 22,
   },
   cardChevron: {
     fontSize: 24,

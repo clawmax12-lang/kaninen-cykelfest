@@ -972,6 +972,14 @@ cykelfestRouter.patch("/participants/:id", async (c) => {
   return c.json({ data: participant });
 });
 
+// DELETE orphaned anonymous participants (created by vote endpoint)
+cykelfestRouter.delete("/participants/cleanup-anonymous", async (c) => {
+  const result = await prisma.participant.deleteMany({
+    where: { name: "Anonym", teamId: null },
+  });
+  return c.json({ data: { deleted: result.count } });
+});
+
 // ---- HOST ASSIGNMENTS / VÄRDSKAP ----
 cykelfestRouter.get("/host-assignments", async (c) => {
   const [assignments, allParticipants] = await Promise.all([

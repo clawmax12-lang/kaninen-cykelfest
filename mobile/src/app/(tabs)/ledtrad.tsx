@@ -136,7 +136,7 @@ export default function LedtradScreen() {
           return (
             <PressableScale
               key={card.id}
-              style={{ opacity: unlocked ? 1 : 0.75 }}
+              style={{ opacity: 1 }}
               testID={`ledtrad-card-${card.id}`}
               onPress={async () => {
                 if (!unlocked) return;
@@ -144,28 +144,13 @@ export default function LedtradScreen() {
                 router.push(`/destination-quiz?course=${card.course}`);
               }}
             >
-              <LinearGradient
-                colors={unlocked ? card.colors : ['#C4814A', '#9E5824']}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                style={[styles.card, !unlocked && { opacity: 0.85 }]}
-              >
-                {unlocked ? (
-                  <>
-                    <View style={styles.cardEmojiWrap}>
-                      <Text style={styles.cardEmoji}>{card.emoji}</Text>
-                      {hasNew ? <View style={styles.notifDot} /> : null}
-                    </View>
-                    <Text style={styles.cardTitle}>{card.title}</Text>
-                    <Text style={styles.cardSubtitle}>{card.subtitle}</Text>
-                  </>
-                ) : (
-                  <>
-                    <Text style={styles.lockEmoji}>🔒</Text>
-                    <Text style={styles.cardTitle}>{card.title}</Text>
-                    <Text style={styles.lockSub}>{unlockLabel || 'Låst'}</Text>
-                  </>
-                )}
+              <LinearGradient colors={card.colors} style={styles.card}>
+                <View style={styles.cardEmojiWrap}>
+                  <Text style={styles.cardEmoji}>{unlocked ? card.emoji : '🔒'}</Text>
+                  {hasNew && unlocked ? <View style={styles.notifDot} /> : null}
+                </View>
+                <Text style={styles.cardTitle}>{card.title}</Text>
+                <Text style={styles.cardSubtitle}>{card.subtitle}</Text>
               </LinearGradient>
             </PressableScale>
           );

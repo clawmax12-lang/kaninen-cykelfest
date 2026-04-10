@@ -521,6 +521,7 @@ export default function AdminScreen() {
   const [ledtradForrattDate, setLedtradForrattDate] = useState<Date>(() => { const d = new Date('2026-05-30'); d.setHours(15, 30, 0, 0); return d; });
   const [ledtradVarmrattDate, setLedtradVarmrattDate] = useState<Date>(() => { const d = new Date('2026-05-30'); d.setHours(18, 15, 0, 0); return d; });
   const [ledtradEfterrattDate, setLedtradEfterrattDate] = useState<Date>(() => { const d = new Date('2026-05-30'); d.setHours(21, 0, 0, 0); return d; });
+  const [poangUnlockDate, setPoangUnlockDate] = useState<Date>(() => { const d = new Date('2026-05-30'); d.setHours(16, 45, 0, 0); return d; });
   const [settingsSaved, setSettingsSaved] = useState(false);
 
   // Statistik
@@ -628,6 +629,7 @@ export default function AdminScreen() {
         if (s?.unlock_ledtrad_forratt) setLedtradForrattDate(parseDate(s.unlock_ledtrad_forratt));
         if (s?.unlock_ledtrad_varmratt) setLedtradVarmrattDate(parseDate(s.unlock_ledtrad_varmratt));
         if (s?.unlock_ledtrad_efterratt) setLedtradEfterrattDate(parseDate(s.unlock_ledtrad_efterratt));
+        if (s?.unlock_poang) setPoangUnlockDate(parseDate(s.unlock_poang));
       }).catch(() => {});
       loadTeamAssignments();
       fetchDestQuizzes();
@@ -1869,7 +1871,7 @@ export default function AdminScreen() {
       <View style={styles.section}>
         <TouchableOpacity style={styles.accordionHeader} onPress={() => toggleSection('faser')}>
           <View style={styles.accordionLabelWrap}>
-            <Text style={styles.accordionLabel}>VAD HÄNDER HÄRNÄST (6 steg)</Text>
+            <Text style={styles.accordionLabel}>VAD HÄNDER HÄRNÄST (5 steg)</Text>
             <Text style={styles.accordionSub}>Steg och milstolpar inför festen</Text>
           </View>
           {expanded['faser'] ? <ChevronUp size={16} color="#9A8E78" /> : <ChevronDown size={16} color="#9A8E78" />}
@@ -1877,7 +1879,6 @@ export default function AdminScreen() {
         {expanded['faser'] ? (
           <View style={{ gap: 10, paddingHorizontal: 4 }}>
             {[
-              { label: 'Intresseanmälan',  settingKey: 'unlock_steg1', sub: 'Personer som anmält intresse', emoji: '✋', colors: ['#D4A017', '#A07810'] },
               { label: 'Bekräfta deltagande', settingKey: 'unlock_steg2', sub: 'Bekräftelse av deltagande',     emoji: '✅', colors: ['#1E8449', '#145A32'] },
               { label: 'Mitt lag',         settingKey: 'unlock_ditt_lag', sub: 'Lagindelning och laginfo',  emoji: '🚴', colors: ['#2471A3', '#1A5276'] },
               { label: 'Mitt värdskap',    settingKey: 'unlock_vardinfo', sub: 'Värdskapsinfo och gästlista', emoji: '🏡', colors: ['#CA6F1E', '#A04000'] },
@@ -2867,7 +2868,7 @@ export default function AdminScreen() {
       <View style={styles.section}>
         <TouchableOpacity style={styles.accordionHeader} onPress={() => toggleSection('poang')}>
           <View style={styles.accordionLabelWrap}>
-            <Text style={styles.accordionLabel}>LEADERBOARD ({teams.length} lag)</Text>
+            <Text style={styles.accordionLabel}>POÄNG ({teams.length} lag)</Text>
             <Text style={styles.accordionSub}>Poängtavla och lagranking i realtid</Text>
           </View>
           {expanded['poang'] ? <ChevronUp size={16} color="#9A8E78" /> : <ChevronDown size={16} color="#9A8E78" />}
@@ -3295,11 +3296,10 @@ export default function AdminScreen() {
             </TouchableOpacity>
 
             {installInforOpen ? ([
-              { label: 'STEG 1 — INTRESSEANMÄLAN PUBLICERAS', date: steg1UnlockDate, setDate: setSteg1UnlockDate },
-              { label: 'STEG 2 — ANMÄLNINGSBEKRÄFTELSE PUBLICERAS', date: steg2UnlockDate, setDate: setSteg2UnlockDate },
-              { label: 'STEG 3 — MITT LAG PUBLICERAS', date: lagUnlockDate, setDate: setLagUnlockDate },
-              { label: 'STEG 4 — MITT VÄRDSKAP PUBLICERAS', date: vardinfoUnlockDate, setDate: setVardinfoUnlockDate },
-              { label: 'STEG 5 — DAGS ATT BÖRJA FESTEN! PUBLICERAS', date: steg6UnlockDate, setDate: setSteg6UnlockDate },
+              { label: 'STEG 1 — ANMÄLNINGSBEKRÄFTELSE PUBLICERAS', date: steg2UnlockDate, setDate: setSteg2UnlockDate },
+              { label: 'STEG 2 — MITT LAG PUBLICERAS', date: lagUnlockDate, setDate: setLagUnlockDate },
+              { label: 'STEG 3 — MITT VÄRDSKAP PUBLICERAS', date: vardinfoUnlockDate, setDate: setVardinfoUnlockDate },
+              { label: 'STEG 4 — DAGS ATT BÖRJA FESTEN! PUBLICERAS', date: steg6UnlockDate, setDate: setSteg6UnlockDate },
               { label: 'ADRESS FÖRRÄTT PUBLICERAS (LÅNGT INNAN FESTDAGEN)', date: steg5UnlockDate, setDate: setSteg5UnlockDate },
             ] as { label: string; date: Date; setDate: (d: Date) => void }[]).map(({ label, date, setDate }) => {
               const y = date.getFullYear(), m = date.getMonth(), d = date.getDate();
@@ -3517,6 +3517,64 @@ export default function AdminScreen() {
               );
             }): null}
 
+            {/* ---- POÄNG ---- */}
+            <View style={{ borderTopWidth: 1, borderTopColor: '#EDE6D6', marginTop: 8, paddingTop: 12 }}>
+              {(() => {
+                const date = poangUnlockDate;
+                const setDate = setPoangUnlockDate;
+                const y = date.getFullYear(), m = date.getMonth(), d = date.getDate();
+                const h = date.getHours(), min = date.getMinutes();
+                const MONTHS = ['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'];
+                const adj = (field: 'y'|'m'|'d'|'h'|'min', delta: number) => {
+                  const next = new Date(date);
+                  if (field === 'y') next.setFullYear(y + delta);
+                  if (field === 'm') next.setMonth(m + delta);
+                  if (field === 'd') next.setDate(d + delta);
+                  if (field === 'h') next.setHours(Math.max(0, Math.min(23, h + delta)));
+                  if (field === 'min') next.setMinutes(Math.max(0, Math.min(59, min + delta)));
+                  setDate(next);
+                };
+                const btnD = { backgroundColor: '#E8E0CC', borderRadius: 6, alignItems: 'center' as const, justifyContent: 'center' as const, height: 24 };
+                const btnT2 = { backgroundColor: '#E8E0CC', borderRadius: 6, alignItems: 'center' as const, justifyContent: 'center' as const, height: 24 };
+                const btnTxt = { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: '#5A5040' };
+                const val = { fontFamily: 'SpaceMono_400Regular', fontSize: 14, color: '#2A2A2A', textAlign: 'center' as const };
+                return (
+                  <View style={{ marginBottom: 12 }}>
+                    <Text style={{ fontFamily: 'SpaceMono_400Regular', fontSize: 9, letterSpacing: 1.5, color: '#9A8E78', marginBottom: 8 }}>POÄNGTAVLAN ÖPPNAR</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                      <View style={{ width: 32, alignItems: 'center', gap: 4 }}>
+                        <TouchableOpacity style={[btnD, { width: 32 }]} onPress={() => adj('d', 1)}><Text style={btnTxt}>+</Text></TouchableOpacity>
+                        <Text style={[val, { width: 32 }]}>{d}</Text>
+                        <TouchableOpacity style={[btnD, { width: 32 }]} onPress={() => adj('d', -1)}><Text style={btnTxt}>−</Text></TouchableOpacity>
+                      </View>
+                      <View style={{ width: 44, alignItems: 'center', gap: 4 }}>
+                        <TouchableOpacity style={[btnD, { width: 44 }]} onPress={() => adj('m', 1)}><Text style={btnTxt}>+</Text></TouchableOpacity>
+                        <Text style={[val, { width: 44 }]}>{MONTHS[m]}</Text>
+                        <TouchableOpacity style={[btnD, { width: 44 }]} onPress={() => adj('m', -1)}><Text style={btnTxt}>−</Text></TouchableOpacity>
+                      </View>
+                      <View style={{ width: 56, alignItems: 'center', gap: 4 }}>
+                        <TouchableOpacity style={[btnD, { width: 56 }]} onPress={() => adj('y', 1)}><Text style={btnTxt}>+</Text></TouchableOpacity>
+                        <Text style={[val, { width: 56 }]}>{y}</Text>
+                        <TouchableOpacity style={[btnD, { width: 56 }]} onPress={() => adj('y', -1)}><Text style={btnTxt}>−</Text></TouchableOpacity>
+                      </View>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 8, gap: 8 }}>
+                      <View style={{ width: 32, alignItems: 'center', gap: 4 }}>
+                        <TouchableOpacity style={[btnT2, { width: 32 }]} onPress={() => adj('h', 1)}><Text style={btnTxt}>+</Text></TouchableOpacity>
+                        <Text style={[val, { width: 32 }]}>{String(h).padStart(2,'0')}</Text>
+                        <TouchableOpacity style={[btnT2, { width: 32 }]} onPress={() => adj('h', -1)}><Text style={btnTxt}>−</Text></TouchableOpacity>
+                      </View>
+                      <View style={{ width: 44, alignItems: 'center', gap: 4 }}>
+                        <TouchableOpacity style={[btnT2, { width: 44 }]} onPress={() => adj('min', 5)}><Text style={btnTxt}>+</Text></TouchableOpacity>
+                        <Text style={[val, { width: 44 }]}>{String(min).padStart(2,'0')}</Text>
+                        <TouchableOpacity style={[btnT2, { width: 44 }]} onPress={() => adj('min', -5)}><Text style={btnTxt}>−</Text></TouchableOpacity>
+                      </View>
+                    </View>
+                  </View>
+                );
+              })()}
+            </View>
+
             {/* ---- EFTER FESTEN ---- */}
             <TouchableOpacity
               onPress={() => setInstallEfterOpen(v => !v)}
@@ -3627,6 +3685,7 @@ export default function AdminScreen() {
                     api.post('/api/cykelfest/settings/unlock_ledtrad_forratt', { value: fmtTime(ledtradForrattDate) }),
                     api.post('/api/cykelfest/settings/unlock_ledtrad_varmratt', { value: fmtTime(ledtradVarmrattDate) }),
                     api.post('/api/cykelfest/settings/unlock_ledtrad_efterratt', { value: fmtTime(ledtradEfterrattDate) }),
+                    api.post('/api/cykelfest/settings/unlock_poang', { value: fmtTime(poangUnlockDate) }),
                   ]);
                   setSettingsSaved(true);
                   setTimeout(() => setSettingsSaved(false), 2500);
@@ -3679,10 +3738,17 @@ export default function AdminScreen() {
                     const match = disposition.match(/filename="?([^";\s]+)"?/);
                     const downloadName = match ? match[1] : 'cykelfest-export.xlsx';
                     // Try Web Share API first (supports share sheet on Safari/iOS)
-                    if (navigator.canShare && navigator.canShare({ files: [new File([blob], downloadName, { type: blob.type })] })) {
+                    let shared = false;
+                    try {
                       const file = new File([blob], downloadName, { type: blob.type });
-                      await navigator.share({ files: [file], title: downloadName });
-                    } else {
+                      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        await navigator.share({ files: [file], title: downloadName });
+                        shared = true;
+                      }
+                    } catch (shareErr: any) {
+                      if (shareErr?.name === 'AbortError') { shared = true; } // user cancelled
+                    }
+                    if (!shared) {
                       // Fallback: trigger browser download
                       const blobUrl = window.URL.createObjectURL(blob);
                       const a = document.createElement('a');

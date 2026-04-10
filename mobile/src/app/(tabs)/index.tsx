@@ -98,7 +98,7 @@ export default function HomeScreen() {
 
   const videoPlayer = useVideoPlayer(
     require('../../../assets/kaninen_dansar.mp4'),
-    (player) => { player.loop = false; }
+    (player) => { player.loop = false; player.pause(); player.muted = true; }
   );
   const [videoPlaying, setVideoPlaying] = useState(false);
   const [videoIdx, setVideoIdx] = useState(0);
@@ -245,11 +245,14 @@ export default function HomeScreen() {
     if (!videoPlayer) return;
     setVideoPlaying(false);
     videoPlayer.pause();
+    videoPlayer.muted = true;
     if (currentVideo?.url) {
-      videoPlayer.replace({ uri: currentVideo.url });
+      videoPlayer.replace({ uri: currentVideo.url, autoPlay: false } as any);
     } else {
       videoPlayer.replace(require('../../../assets/kaninen_dansar.mp4'));
     }
+    // Ensure paused after replace
+    setTimeout(() => { videoPlayer.pause(); videoPlayer.muted = true; }, 100);
   }, [currentVideo?.url]);
 
   async function handleVote(choice: number) {
@@ -351,6 +354,7 @@ export default function HomeScreen() {
                 videoPlayer?.pause();
                 setVideoPlaying(false);
               } else {
+                if (videoPlayer) videoPlayer.muted = false;
                 videoPlayer?.play();
                 setVideoPlaying(true);
               }
@@ -562,7 +566,7 @@ export default function HomeScreen() {
           )}
           <View style={styles.timelineContent}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <Text style={vardinfoUnlocked ? styles.timelineTitleActive : styles.timelineTitle}>Info om mitt värdskap</Text>
+              <Text style={vardinfoUnlocked ? styles.timelineTitleActive : styles.timelineTitle}>Info om mitt värdskap & uppdrag</Text>
               {hostHasUpdate && vardinfoUnlocked ? (
                 <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: '#E53935' }} />
               ) : null}
@@ -591,12 +595,12 @@ export default function HomeScreen() {
             colors={lagUnlocked ? ['#9E5824', '#7A3D18'] : ['#C4814A', '#9E5824']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
-            style={[styles.teamCard, !lagUnlocked && { opacity: 0.85 }]}
+            style={styles.teamCard}
           >
             <Text style={styles.teamCardLock}>{lagUnlocked ? '🏆' : '🔒'}</Text>
             <Text style={styles.teamCardTitle}>Mitt lag</Text>
             <Text style={styles.quickLinkLockedSub}>
-              {lagUnlocked ? 'Tryck för att se mitt lag' : `Tillgänglig från ${lagDateLabel}`}
+              {lagUnlocked ? 'Info om lag och lagmedlemmar' : `Tillgänglig från ${lagDateLabel}`}
             </Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -813,14 +817,14 @@ export default function HomeScreen() {
             colors={vardinfoUnlocked ? ['#0F2347', '#0A1830'] : ['#1A3A6B', '#0F2347']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
-            style={[styles.quickLinkBtnPrimary, !vardinfoUnlocked && { opacity: 0.85 }]}
+            style={styles.quickLinkBtnPrimary}
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <Text style={styles.teamCardLock}>{vardinfoUnlocked ? '🏠' : '🔒'}</Text>
             </View>
-            <Text style={styles.quickLinkTextPrimary}>Mitt värdskap</Text>
+            <Text style={styles.quickLinkTextPrimary}>Mitt värdskap & uppdrag</Text>
             <Text style={styles.quickLinkLockedSub}>
-              {vardinfoUnlocked ? 'Info om värdskap & uppdrag' : `Pinkod skickas separat\nTillgänglig från ${vardinfoDateLabel}`}
+              {vardinfoUnlocked ? 'Info om värdskap & uppdrag' : `Pinkod skickas separat. Tillgänglig från ${vardinfoDateLabel}.`}
             </Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -884,7 +888,7 @@ export default function HomeScreen() {
       </Animated.View>
 
       {/* ÅTERKOPPLING */}
-      <Animated.View entering={FadeIn.delay(340)} style={[styles.section, !aterkopplingUnlocked && { opacity: 0.4 }]}>
+      <Animated.View entering={FadeIn.delay(340)} style={styles.section}>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionLabel}>ÅTERKOPPLING</Text>
         </View>
@@ -900,6 +904,7 @@ export default function HomeScreen() {
             end={{ x: 1, y: 1 }}
             style={styles.aterkopplingGradient}
           >
+            {!aterkopplingUnlocked && <Text style={{ fontSize: 28, textAlign: 'center', marginBottom: 8 }}>🔒</Text>}
             <Text style={styles.aterkopplingTitle}>Hur var festen?</Text>
             <Text style={styles.aterkopplingSub}>Berätta hur kvällen var — fem snabba frågor</Text>
             {aterkopplingUnlocked ? (
@@ -918,7 +923,7 @@ export default function HomeScreen() {
                 </View>
               </View>
             ) : (
-              <Text style={styles.aterkopplingLocked}>Aktiveras efter festen</Text>
+              <Text style={styles.aterkopplingLocked}></Text>
             )}
           </LinearGradient>
         </TouchableOpacity>
@@ -1219,7 +1224,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6FBF8',
   },
   timelineRowLocked: {
-    opacity: 0.52,
+    opacity: 1,
   },
   timelineDot: {
     width: 30,
@@ -1955,17 +1960,20 @@ const styles = StyleSheet.create({
   aterkopplingGradient: {
     padding: 20,
     gap: 4,
+    alignItems: 'center' as const,
   },
   aterkopplingTitle: {
     fontFamily: 'DMSerifDisplay_400Regular',
     fontSize: 22,
     color: '#F5EFE0',
+    textAlign: 'center' as const,
   },
   aterkopplingSub: {
     fontFamily: 'DMSans_400Regular',
     fontSize: 13,
     color: 'rgba(245,239,224,0.75)',
     lineHeight: 18,
+    textAlign: 'center' as const,
   },
   aterkopplingArrow: {
     fontFamily: 'DMSans_600SemiBold',

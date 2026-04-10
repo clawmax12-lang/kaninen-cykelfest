@@ -134,7 +134,7 @@ export default function KalendariumScreen() {
     {
       status: vardinfoUnlocked ? 'active' : 'locked',
       icon: '3',
-      title: 'Info om mitt värdskap',
+      title: 'Info om mitt värdskap & uppdrag',
       sub: vardinfoUnlocked ? 'Se vad som gäller för mitt värdskap' : `Pinkod skickas separat. Tillgänglig från ${vardinfoDateLabel}.`,
       badge: vardinfoUnlocked ? 'Öppet' : 'Kommande',
       detail: vardinfoUnlocked ? undefined : 'Information till dig som är värd: vilka gäster som kommer, eventuella allergier och annat praktiskt att tänka på.',

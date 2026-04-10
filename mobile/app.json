@@ -6,12 +6,27 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
+    "backgroundColor": "#1C4F4A",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "backgroundColor": "#1C4F4A"
     },
     "android": {
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "backgroundColor": "#1C4F4A",
+      "navigationBar": {
+        "backgroundColor": "#1C4F4A"
+      }
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#1C4F4A",
+      "barStyle": "light-content",
+      "translucent": false
+    },
+    "web": {
+      "backgroundColor": "#1C4F4A",
+      "themeColor": "#1C4F4A"
     },
     "plugins": ["expo-router"],
     "experiments": {

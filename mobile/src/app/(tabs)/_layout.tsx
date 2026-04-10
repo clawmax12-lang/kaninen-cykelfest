@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
   navOuter: {
     borderTopWidth: 1,
     borderTopColor: 'rgba(0,0,0,0.08)',
-    paddingTop: 2,
+    paddingTop: 8,
     paddingHorizontal: 8,
     backgroundColor: '#F5EFE0',
     overflow: 'hidden',
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
   },
   tabInner: {
     alignItems: 'center',
-    paddingVertical: 3,
+    paddingVertical: 6,
     paddingHorizontal: 16,
     borderRadius: 14,
     minWidth: 58,
