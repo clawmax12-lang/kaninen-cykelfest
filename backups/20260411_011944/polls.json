@@ -1,0 +1,114 @@
+{
+  "data": [
+    {
+      "id": "cmntb4sfw0003l804i8kh2o82",
+      "question": "Världens största kryssningsfartyg \"Icon of the Seas\" rymmer max antal passagerare?",
+      "options": "[\"3 600\",\"5 610\",\"7 600\",\"9 950\"]",
+      "correctAnswer": 2,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:36:59.814Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmntb4sz00004l804ji78lj2o",
+      "question": "Vilken alpin skidort har en bana som heter \"Harakiri\" — Österrikes brantaste?",
+      "options": "[\"St. Anton\",\"Ischgl\",\"Mayrhofen\",\"Kitzbühel\"]",
+      "correctAnswer": 2,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:37:02.892Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmntb4thb0005l804t9bavga6",
+      "question": "Club 33 är en hemlig klubb inuti Disneyland. Vad kostar årsmedlemskapet ungefär?",
+      "options": "[\"$5 000\",\"$15 000\",\"$25 000\",\"$50 000\"]",
+      "correctAnswer": 2,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:37:03.552Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmnacpsv50000l8044phce3dd",
+      "question": "Hur fixar du din festklädsel?",
+      "options": "[\"Beställer från Temu 🛒\",\"Syr själv ✂️\",\"Second hand 👚\"]",
+      "correctAnswer": null,
+      "closesAt": null,
+      "createdAt": "2026-03-28T13:13:44.707Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmntb4j9a0000jp04wfnkvssn",
+      "question": "På en charterresa till Turkiet ingår \"all inclusive\". Vad ingår INTE?",
+      "options": "[\"Lokalt vin i obegränsad mängd\",\"Poolhandduk utan deposit\",\"Snorkutrustning vid stranden\",\"Gratis Wi-Fi i lobbyn\"]",
+      "correctAnswer": 1,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:36:50.302Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmntb4js50001jp04si00bodk",
+      "question": "Vad kallas de fem stora djuren man hoppas se på safari?",
+      "options": "[\"The Famous Five\",\"The Big Five\",\"The Safari Stars\",\"The African Legends\"]",
+      "correctAnswer": 1,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:36:50.981Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmntb4kee0002jp04i415sqag",
+      "question": "Kungsleden i Sverige är ca 440 km lång. Var börjar den?",
+      "options": "[\"Kebnekaise fjällstation\",\"Abisko\",\"Hemavan\",\"Nikkaluokta\"]",
+      "correctAnswer": 1,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:36:51.782Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmntb4kzx0003jp04siyu48ti",
+      "question": "Vad heter det berömda tåg som går mellan Moskva och Vladivostok?",
+      "options": "[\"Orient Express\",\"Transsibiriska järnvägen\",\"Silk Road Express\",\"Glacier Express\"]",
+      "correctAnswer": 1,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:36:52.558Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmntb4ljn0004jp04osixhc4k",
+      "question": "Vad är \"allemansrätten\" i Sverige INTE tillåter dig att göra?",
+      "options": "[\"Plocka svamp i skogen\",\"Tälta en natt på privat mark\",\"Elda med grenar från levande träd\",\"Bada i en privat sjö\"]",
+      "correctAnswer": 2,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:36:53.268Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmntb4n9p0001l804l5c9q7os",
+      "question": "Vilken ö är mest känd som destination för triathlon-träningsläger?",
+      "options": "[\"Kreta\",\"Mallorca\",\"Lanzarote\",\"Sardinien\"]",
+      "correctAnswer": 2,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:36:53.975Z",
+      "orderIndex": 0,
+      "votes": []
+    },
+    {
+      "id": "cmntb4q2k0002l804pbraverl",
+      "question": "I Thailand finns \"Khao San Road\". Vad är den mest känd som?",
+      "options": "[\"Världens längsta matmarknad\",\"Backpackers paradgata\",\"Bangkoks äldsta tempel\",\"Plats för fullmånefesten\"]",
+      "correctAnswer": 1,
+      "closesAt": null,
+      "createdAt": "2026-04-10T19:36:56.398Z",
+      "orderIndex": 0,
+      "votes": []
+    }
+  ]
+}

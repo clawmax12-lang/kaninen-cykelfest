@@ -1,0 +1,211 @@
+{
+  "data": [
+    {
+      "id": "cmn9djyj0000fle048k5gc7jg",
+      "course": "förrätt",
+      "imageUrl": "https://www.kaninenscykelfest.com/dest-forratt.jpg",
+      "createdAt": "2026-03-27T20:49:25.645Z",
+      "updatedAt": "2026-03-30T18:05:57.181Z",
+      "questions": [
+        {
+          "id": "cmndnwvtd00018wmildqg0zst",
+          "quizId": "cmn9djyj0000fle048k5gc7jg",
+          "question": "Lyssna på ljudet. Vilken typ av cykling är det?",
+          "options": "[\"Mountainbike på grusväg\",\"Gruscykling på landsväg\",\"Racercykel på stenstatt\",\"Hybridcykel på gångväg\"]",
+          "correctAnswer": 0,
+          "orderIndex": 1,
+          "contentType": "audio",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/audio_f1.mp3",
+          "createdAt": "2026-03-30T20:50:29.521Z"
+        },
+        {
+          "id": "cmndnwvxq00038wmi783zfp4g",
+          "quizId": "cmn9djyj0000fle048k5gc7jg",
+          "question": "Lyssna på motorljudet. Vilken motorcykel startar?",
+          "options": "[\"Kawasaki ZX-6R (600 cc)\",\"Harley-Davidson Sportster (1200 cc)\",\"Honda CB500 (500 cc)\",\"Yamaha R1 (1000 cc)\"]",
+          "correctAnswer": 0,
+          "orderIndex": 2,
+          "contentType": "audio",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/audio_f2.mp3",
+          "createdAt": "2026-03-30T20:50:29.678Z"
+        },
+        {
+          "id": "cmndnww1o00058wmi2dnyfoem",
+          "quizId": "cmn9djyj0000fle048k5gc7jg",
+          "question": "Titta på cykeln. Vilken typ av broms har den?",
+          "options": "\"[\\\"Skivbroms\\\",\\\"Fälgbroms\\\",\\\"Fotbroms\\\",\\\"Trumbroms\\\"]\"",
+          "correctAnswer": 0,
+          "orderIndex": 3,
+          "contentType": "image",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/q_cykelverktyg.jpg",
+          "createdAt": "2026-03-30T20:50:29.821Z"
+        },
+        {
+          "id": "cmndnww7u00078wmik2ilvy9g",
+          "quizId": "cmn9djyj0000fle048k5gc7jg",
+          "question": "Vad kallas den täta gruppen av cyklister som åker tillsammans i ett lopp?",
+          "options": "[\"Pelotongen\",\"Karavanen\",\"Paketet\",\"Svansen\"]",
+          "correctAnswer": 0,
+          "orderIndex": 4,
+          "contentType": "text",
+          "contentText": null,
+          "contentUrl": null,
+          "createdAt": "2026-03-30T20:50:30.042Z"
+        },
+        {
+          "id": "cmndnwwbu00098wmie9cqrqmo",
+          "quizId": "cmn9djyj0000fle048k5gc7jg",
+          "question": "Tour de France har körts nästan varje år sedan 1903. Ungefär hur lång är den totala sträckan?",
+          "options": "[\"Ca 1 500 km\",\"Ca 3 500 km\",\"Ca 5 500 km\",\"Ca 7 500 km\"]",
+          "correctAnswer": 1,
+          "orderIndex": 5,
+          "contentType": "text",
+          "contentText": null,
+          "contentUrl": null,
+          "createdAt": "2026-03-30T20:50:30.187Z"
+        }
+      ]
+    },
+    {
+      "id": "cmn9djz93000gle04bo6fqv61",
+      "course": "varmrätt",
+      "imageUrl": "https://www.kaninenscykelfest.com/dest-varmratt.jpg",
+      "createdAt": "2026-03-27T20:49:26.584Z",
+      "updatedAt": "2026-03-30T18:05:57.334Z",
+      "questions": [
+        {
+          "id": "cmndnwwfu000b8wmitfpyx4e0",
+          "quizId": "cmn9djz93000gle04bo6fqv61",
+          "question": "Lyssna noga. Vilket djur hör du — och varför låter det så?",
+          "options": "[\"En kanin som är rädd\",\"En kanin som är hungrig\",\"En kanin som leker\",\"En kanin som sover\"]",
+          "correctAnswer": 0,
+          "orderIndex": 1,
+          "contentType": "audio",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/audio_v1.mp3",
+          "createdAt": "2026-03-30T20:50:30.330Z"
+        },
+        {
+          "id": "cmndnwwmc000d8wmi9cgy5kcg",
+          "quizId": "cmn9djz93000gle04bo6fqv61",
+          "question": "Vilken populär kaninras ser du på bilden?",
+          "options": "\"[\\\"Dvärgvädur\\\",\\\"Lejonhuvad kanin\\\",\\\"Rex\\\",\\\"Flamländsk jätte\\\"]\"",
+          "correctAnswer": 0,
+          "orderIndex": 2,
+          "contentType": "image",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/q_peterrabbitt.jpg",
+          "createdAt": "2026-03-30T20:50:30.564Z"
+        },
+        {
+          "id": "cmndnwwqc000f8wmi51cgielw",
+          "quizId": "cmn9djz93000gle04bo6fqv61",
+          "question": "Titta noga på bilden. Vilket djur ser du FÖRST?",
+          "options": "[\"En anka\",\"En kanin\",\"Båda på en gång\",\"Varken anka eller kanin\"]",
+          "correctAnswer": 0,
+          "orderIndex": 3,
+          "contentType": "image",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/q_ankakani.jpg",
+          "createdAt": "2026-03-30T20:50:30.708Z"
+        },
+        {
+          "id": "cmndnwwue000h8wmi1rwomgif",
+          "quizId": "cmn9djz93000gle04bo6fqv61",
+          "question": "Vad kallas kaninens sätt att hoppa och snurra i luften av glädje?",
+          "options": "[\"Binkying\",\"Floppar\",\"Zoomies\",\"Kanindansen\"]",
+          "correctAnswer": 0,
+          "orderIndex": 4,
+          "contentType": "text",
+          "contentText": null,
+          "contentUrl": null,
+          "createdAt": "2026-03-30T20:50:30.855Z"
+        },
+        {
+          "id": "cmndnwwyg000j8wmiohgrs7dg",
+          "quizId": "cmn9djz93000gle04bo6fqv61",
+          "question": "Vad heter kaninen som är bästa kompis med Bamse i serierna?",
+          "options": "[\"Pelle Kanin\",\"Lille Skutt\",\"Hoppsan\",\"Lansen\"]",
+          "correctAnswer": 1,
+          "orderIndex": 5,
+          "contentType": "text",
+          "contentText": null,
+          "contentUrl": null,
+          "createdAt": "2026-03-30T20:50:31.000Z"
+        }
+      ]
+    },
+    {
+      "id": "cmn81755o0000jv043b3y06ox",
+      "course": "efterrätt",
+      "imageUrl": "https://www.kaninenscykelfest.com/dest-efterratt.jpg",
+      "createdAt": "2026-03-26T22:15:46.141Z",
+      "updatedAt": "2026-03-30T18:05:57.476Z",
+      "questions": [
+        {
+          "id": "cmndnwx4u000l8wmibzyg42mo",
+          "quizId": "cmn81755o0000jv043b3y06ox",
+          "question": "Lyssna noga. Hur kissar personen du hör?",
+          "options": "[\"Står och kissar i toaletten\",\"Sitter och kissar\",\"Står och kissar i en pissoar\",\"Kissar i en buske\"]",
+          "correctAnswer": 0,
+          "orderIndex": 1,
+          "contentType": "audio",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/audio_e1.mp3",
+          "createdAt": "2026-03-30T20:50:31.230Z"
+        },
+        {
+          "id": "cmndnwx8u000n8wmiw24p8ios",
+          "quizId": "cmn81755o0000jv043b3y06ox",
+          "question": "Hur många glas whiskey syns på bilden?",
+          "options": "\"[\\\"Tre\\\",\\\"Två\\\",\\\"Fyra\\\",\\\"Ett\\\"]\"",
+          "correctAnswer": 0,
+          "orderIndex": 2,
+          "contentType": "image",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/q_whiskey_water.jpg",
+          "createdAt": "2026-03-30T20:50:31.375Z"
+        },
+        {
+          "id": "cmndnwxcy000p8wmibe4g40dm",
+          "quizId": "cmn81755o0000jv043b3y06ox",
+          "question": "Vilken ört garnerar den här cocktailen?",
+          "options": "\"[\\\"Rosmarin\\\",\\\"Timjan\\\",\\\"Basilika\\\",\\\"Mynta\\\"]\"",
+          "correctAnswer": 0,
+          "orderIndex": 3,
+          "contentType": "image",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/q_umbrella.jpg",
+          "createdAt": "2026-03-30T20:50:31.522Z"
+        },
+        {
+          "id": "cmndnwxjc000r8wmioq6mioh9",
+          "quizId": "cmn81755o0000jv043b3y06ox",
+          "question": "Vilka av dessa whiskymärken kan du hitta på barhyllan?",
+          "options": "\"[\\\"Tullamore Dew\\\",\\\"Johnnie Walker & Macallan\\\",\\\"Laphroaig & Talisker\\\",\\\"Monkey Shoulder\\\"]\"",
+          "correctAnswer": 1,
+          "orderIndex": 4,
+          "contentType": "image",
+          "contentText": null,
+          "contentUrl": "https://www.kaninenscykelfest.com/q_whisky.jpg",
+          "createdAt": "2026-03-30T20:50:31.752Z"
+        },
+        {
+          "id": "cmndnwxnc000t8wmibfann6hz",
+          "quizId": "cmn81755o0000jv043b3y06ox",
+          "question": "Vad heter den klassiska cocktailen gjord på gin och vermouth, serverad i ett martini-glas?",
+          "options": "[\"Gin & Tonic\",\"Negroni\",\"Martini\",\"Gibson\"]",
+          "correctAnswer": 2,
+          "orderIndex": 5,
+          "contentType": "text",
+          "contentText": null,
+          "contentUrl": null,
+          "createdAt": "2026-03-30T20:50:31.896Z"
+        }
+      ]
+    }
+  ]
+}

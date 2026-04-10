@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "id": "cmnad1c760000l504zecadjh3",
+      "title": "Bekräfta deltagande - senast 17 april",
+      "body": "Bekräfta ditt deltagande senast den 17 april.",
+      "type": "viktig",
+      "createdAt": "2026-04-10T12:00:00.000Z",
+      "publishedBy": null,
+      "pollId": null
+    },
+    {
+      "id": "cmnacq8ai0003l2044gpzwn33",
+      "title": "Lagen avslöjas snart 🐇",
+      "body": "Spänningen stiger! Inom kort får du veta vilket lag du tillhör och vilka som är dina lagkamrater under cykelfestens aktiviteter. Håll koll på appen — laginfon kommer i slutet av april.",
+      "type": "nyhet",
+      "createdAt": "2026-04-10T12:00:00.000Z",
+      "publishedBy": null,
+      "pollId": null
+    },
+    {
+      "id": "cmnacq7oo0002l204xafch2bi",
+      "title": "Hur fixar du din festklädsel?",
+      "body": "Vi är nyfikna — hur löser du klädseln till Kaninens Cykelfest? Rösta nedan!",
+      "type": "omrostning",
+      "createdAt": "2026-04-10T12:00:00.000Z",
+      "publishedBy": null,
+      "pollId": "cmnacpsv50000l8044phce3dd"
+    }
+  ]
+}

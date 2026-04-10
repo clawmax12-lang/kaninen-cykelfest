@@ -1,0 +1,225 @@
+{
+  "data": [
+    {
+      "id": "cmnryx1jc000dl504lgvlq3j4",
+      "teamId": "cmn9djxsu000ele04tutyo31r",
+      "phaseId": null,
+      "points": 5,
+      "reason": "deltavling-2",
+      "awardedAt": "2026-04-09T21:13:41.019Z",
+      "team": {
+        "id": "cmn9djxsu000ele04tutyo31r",
+        "name": "Club 33",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:24.702Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrythkj000lkv04g976qc4t",
+      "teamId": "cmn9djxsu000ele04tutyo31r",
+      "phaseId": null,
+      "points": 5,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:40.397Z",
+      "team": {
+        "id": "cmn9djxsu000ele04tutyo31r",
+        "name": "Club 33",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:24.702Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnryx0fh0009l504ewwa2sfn",
+      "teamId": "cmn9djxfo000dle043arra8j8",
+      "phaseId": null,
+      "points": 4,
+      "reason": "deltavling-2",
+      "awardedAt": "2026-04-09T21:13:39.788Z",
+      "team": {
+        "id": "cmn9djxfo000dle043arra8j8",
+        "name": "Alpresa",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:24.228Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrytgxd000jkv04k2x6o39o",
+      "teamId": "cmn9djxfo000dle043arra8j8",
+      "phaseId": null,
+      "points": 5,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:39.176Z",
+      "team": {
+        "id": "cmn9djxfo000dle043arra8j8",
+        "name": "Alpresa",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:24.228Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrywzga0005l504vk13dl1z",
+      "teamId": "cmn9djx2m000cle049z41jf0f",
+      "phaseId": null,
+      "points": 1,
+      "reason": "deltavling-2",
+      "awardedAt": "2026-04-09T21:13:38.492Z",
+      "team": {
+        "id": "cmn9djx2m000cle049z41jf0f",
+        "name": "Kryssning",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:23.758Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrytgcm000hkv04izkqv8if",
+      "teamId": "cmn9djx2m000cle049z41jf0f",
+      "phaseId": null,
+      "points": 5,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:37.645Z",
+      "team": {
+        "id": "cmn9djx2m000cle049z41jf0f",
+        "name": "Kryssning",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:23.758Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrytfsl000fkv04hxi3ua2k",
+      "teamId": "cmn9djwpk000ble04bbqdxiwi",
+      "phaseId": null,
+      "points": 5,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:37.037Z",
+      "team": {
+        "id": "cmn9djwpk000ble04bbqdxiwi",
+        "name": "Backpacking",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:23.288Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrytfbl000dkv04eyu4k28o",
+      "teamId": "cmn9djwch000ale04gjjfta51",
+      "phaseId": null,
+      "points": 6,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:36.400Z",
+      "team": {
+        "id": "cmn9djwch000ale04gjjfta51",
+        "name": "Träningsresa",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:22.818Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnryterv000bkv04nkm3amv4",
+      "teamId": "cmn9djvzd0009le04j8fqjnvf",
+      "phaseId": null,
+      "points": 8,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:35.711Z",
+      "team": {
+        "id": "cmn9djvzd0009le04j8fqjnvf",
+        "name": "Camping",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:22.345Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrytear0009kv04jcgj5lki",
+      "teamId": "cmn9djvma0008le04otgtw1r2",
+      "phaseId": null,
+      "points": 9,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:35.084Z",
+      "team": {
+        "id": "cmn9djvma0008le04otgtw1r2",
+        "name": "Tågluff",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:21.875Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrytdtt0007kv04dpkfoe9w",
+      "teamId": "cmn9djv990007le04flbqswg6",
+      "phaseId": null,
+      "points": 10,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:34.368Z",
+      "team": {
+        "id": "cmn9djv990007le04flbqswg6",
+        "name": "Fjällvandring",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:21.405Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrytd9i0005kv04ygi7f19g",
+      "teamId": "cmn9djuw60006le04bov0ypmv",
+      "phaseId": null,
+      "points": 4,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:33.550Z",
+      "team": {
+        "id": "cmn9djuw60006le04bov0ypmv",
+        "name": "Safari",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-27T20:49:20.934Z"
+      },
+      "phase": null
+    },
+    {
+      "id": "cmnrytcry0003kv04q6g75jto",
+      "teamId": "cmn5qdohj0001l5048almst0m",
+      "phaseId": null,
+      "points": 7,
+      "reason": "deltavling-1",
+      "awardedAt": "2026-04-09T21:13:32.741Z",
+      "team": {
+        "id": "cmn5qdohj0001l5048almst0m",
+        "name": "Charter",
+        "theme": null,
+        "hostAddress": null,
+        "color": null,
+        "createdAt": "2026-03-25T07:37:22.978Z"
+      },
+      "phase": null
+    }
+  ]
+}

@@ -1,0 +1,1516 @@
+{
+  "data": [
+    {
+      "id": "cmnbxrsui005w8w4nkq40fc5z",
+      "type": "meal",
+      "pin": "1001",
+      "hostNames": "Ann-Carine Alm; Sigge Lind",
+      "address": "Blomstervägen 26",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:56.202Z",
+      "updatedAt": "2026-03-29T15:50:56.202Z",
+      "guests": [
+        {
+          "participantName": "Mats Ryttlefors",
+          "dietary": null
+        },
+        {
+          "participantName": "Marcus Börling",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Fernholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Andreas Larsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Marie Linton",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Lund",
+          "dietary": null
+        },
+        {
+          "participantName": "Marie-Louise Mattsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Per Mattsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Tobias Ahlgren",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrt4f00668w4nul8j5lo2",
+      "type": "meal",
+      "pin": "1002",
+      "hostNames": "Cecilia Olsson; Calle Håkansson",
+      "address": "Åkervägen 46",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:56.559Z",
+      "updatedAt": "2026-03-29T15:50:56.559Z",
+      "guests": [
+        {
+          "participantName": "Christina Stenhammar",
+          "dietary": null
+        },
+        {
+          "participantName": "Johan Stenhammar",
+          "dietary": null
+        },
+        {
+          "participantName": "Maria Öfverberg Eriksson",
+          "dietary": null
+        },
+        {
+          "participantName": "Ulrica Hedman",
+          "dietary": null
+        },
+        {
+          "participantName": "Jörgen Jonsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Håkan Lidenholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Lena Liljeström",
+          "dietary": null
+        },
+        {
+          "participantName": "David McGott",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrtbl006f8w4ngnvi30tv",
+      "type": "meal",
+      "pin": "1003",
+      "hostNames": "Helena Pettersson; Börje Pettersson",
+      "address": "Lönnviksvägen 10 B",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:56.817Z",
+      "updatedAt": "2026-03-29T15:50:56.817Z",
+      "guests": [
+        {
+          "participantName": "Linda Ryttlefors",
+          "dietary": null
+        },
+        {
+          "participantName": "Tomas Stavbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Ronny Persson",
+          "dietary": "Avokado, nötter"
+        },
+        {
+          "participantName": "Eva Hartman-Juhlin",
+          "dietary": null
+        },
+        {
+          "participantName": "Christopher Juhlin",
+          "dietary": null
+        },
+        {
+          "participantName": "Niclas Krona",
+          "dietary": null
+        },
+        {
+          "participantName": "Linda Ahlgren",
+          "dietary": null
+        },
+        {
+          "participantName": "Milla Mohr",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrtl2006o8w4n1fms1dk6",
+      "type": "meal",
+      "pin": "1004",
+      "hostNames": "Ingela Lennerstrand; Johan Lennerstrand",
+      "address": "Höjdvägen 30B",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:57.158Z",
+      "updatedAt": "2026-03-29T15:50:57.158Z",
+      "guests": [
+        {
+          "participantName": "Olov Duvernoy",
+          "dietary": null
+        },
+        {
+          "participantName": "Ellen Stavbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Johanna Viring Till",
+          "dietary": null
+        },
+        {
+          "participantName": "PO Eriksson",
+          "dietary": null
+        },
+        {
+          "participantName": "Peter Bohman",
+          "dietary": null
+        },
+        {
+          "participantName": "Tommy Enkvist",
+          "dietary": null
+        },
+        {
+          "participantName": "Jenny Hedberg",
+          "dietary": null
+        },
+        {
+          "participantName": "Anna Hårdstedt",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrtuv006x8w4n5h4xmcjz",
+      "type": "meal",
+      "pin": "1005",
+      "hostNames": "Jenny Andersson Collby; Daniel Andersson Collby",
+      "address": "Pilfinksvägen 1",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:57.511Z",
+      "updatedAt": "2026-03-29T15:50:57.511Z",
+      "guests": [
+        {
+          "participantName": "Erika Terao",
+          "dietary": null
+        },
+        {
+          "participantName": "Fredrik Wetterqvist",
+          "dietary": null
+        },
+        {
+          "participantName": "Stina Bohman",
+          "dietary": null
+        },
+        {
+          "participantName": "Christofer Ekstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Krona",
+          "dietary": "Nötter, skaldjur"
+        },
+        {
+          "participantName": "Kajsa Lindner Bennbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Mattias Lund",
+          "dietary": null
+        },
+        {
+          "participantName": "Daniel Adwall",
+          "dietary": null
+        },
+        {
+          "participantName": "Mathias Lindner",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxru2300778w4ni40oppun",
+      "type": "meal",
+      "pin": "1006",
+      "hostNames": "Jenny Bexell; Marcus Lindholm",
+      "address": "Ekvägen 6A",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:57.771Z",
+      "updatedAt": "2026-03-29T15:50:57.771Z",
+      "guests": [
+        {
+          "participantName": "Katarina Börling",
+          "dietary": null
+        },
+        {
+          "participantName": "Hanna Söderberg",
+          "dietary": "Nötter, mandel, jordgubbar"
+        },
+        {
+          "participantName": "Tomas Gunnarsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Charlotte Gelin Bornudd",
+          "dietary": null
+        },
+        {
+          "participantName": "Peter Stenlund",
+          "dietary": null
+        },
+        {
+          "participantName": "Micke Kravik",
+          "dietary": null
+        },
+        {
+          "participantName": "Deborah McGott",
+          "dietary": null
+        },
+        {
+          "participantName": "Matthias Mohr",
+          "dietary": null
+        },
+        {
+          "participantName": "Markus Haukkala",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrub0007h8w4nt7d1djie",
+      "type": "meal",
+      "pin": "1007",
+      "hostNames": "Malin Olsson; Tobias Norström",
+      "address": "Gärdesvägen 5",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:58.092Z",
+      "updatedAt": "2026-03-29T15:50:58.092Z",
+      "guests": [
+        {
+          "participantName": "Nina Pettersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Monica Segelsjö",
+          "dietary": "Nötter, mandel"
+        },
+        {
+          "participantName": "Magnus Söderberg",
+          "dietary": null
+        },
+        {
+          "participantName": "Peter Tedeholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Sara Blomberg",
+          "dietary": null
+        },
+        {
+          "participantName": "Per Eckerbom",
+          "dietary": "Persilja, exotiska frukter, nötter"
+        },
+        {
+          "participantName": "Lena Jonsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Per Liljeström",
+          "dietary": "Fisk, kyckling"
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrui6007q8w4nm4wx1we4",
+      "type": "meal",
+      "pin": "1008",
+      "hostNames": "Maria Hellman; Mats Hellman",
+      "address": "Rödhakevägen 29C",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:58.350Z",
+      "updatedAt": "2026-03-29T15:50:58.350Z",
+      "guests": [
+        {
+          "participantName": "Åsa Wallander Wetterqvist",
+          "dietary": null
+        },
+        {
+          "participantName": "Oscar Diös",
+          "dietary": null
+        },
+        {
+          "participantName": "Sabine Gebert Persson",
+          "dietary": null
+        },
+        {
+          "participantName": "Michell Julin",
+          "dietary": null
+        },
+        {
+          "participantName": "Anette Kravik",
+          "dietary": null
+        },
+        {
+          "participantName": "Svante Kumlien",
+          "dietary": null
+        },
+        {
+          "participantName": "Hans Linton",
+          "dietary": null
+        },
+        {
+          "participantName": "Kajsa Bennbom Lindner",
+          "dietary": null
+        },
+        {
+          "participantName": "Carolina Björklund",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrurg00808w4n64hjvnnj",
+      "type": "meal",
+      "pin": "1009",
+      "hostNames": "Marie Eklöf; Sven-Åke Eklöf",
+      "address": "Krickvägen 46",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:58.684Z",
+      "updatedAt": "2026-03-29T15:50:58.684Z",
+      "guests": [
+        {
+          "participantName": "Robert Till",
+          "dietary": null
+        },
+        {
+          "participantName": "Magnus Blomberg",
+          "dietary": null
+        },
+        {
+          "participantName": "Jennie Ekstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Mikael Gelin",
+          "dietary": null
+        },
+        {
+          "participantName": "Emma Julin",
+          "dietary": null
+        },
+        {
+          "participantName": "Annika Kits",
+          "dietary": null
+        },
+        {
+          "participantName": "Marcus Andersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Anna Lidenholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Gustaf Björklund",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrv0y008a8w4nvq85vk7w",
+      "type": "meal",
+      "pin": "1010",
+      "hostNames": "Ulrika Eriksson; Juppe Carlsson",
+      "address": "Morkullevägen 23",
+      "meal": "Förrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:59.027Z",
+      "updatedAt": "2026-03-29T15:50:59.027Z",
+      "guests": [
+        {
+          "participantName": "Tomas Vidinghoff",
+          "dietary": null
+        },
+        {
+          "participantName": "Karin Eckerbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Victoria Enkvist",
+          "dietary": null
+        },
+        {
+          "participantName": "LG Lundgren",
+          "dietary": null
+        },
+        {
+          "participantName": "Mari Kumlien",
+          "dietary": null
+        },
+        {
+          "participantName": "Sofia Lernskog",
+          "dietary": null
+        },
+        {
+          "participantName": "Daniel Årvik",
+          "dietary": null
+        },
+        {
+          "participantName": "Mattias Lindner",
+          "dietary": null
+        },
+        {
+          "participantName": "Linda Adwall",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrv86008k8w4n18ceo3nw",
+      "type": "meal",
+      "pin": "2001",
+      "hostNames": "Anna Lidenholm; Håkan Lidenholm",
+      "address": "Talgoxvägen 7",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:59.286Z",
+      "updatedAt": "2026-03-29T15:50:59.286Z",
+      "guests": [
+        {
+          "participantName": "Tobias Norström",
+          "dietary": null
+        },
+        {
+          "participantName": "Nina Pettersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Johanna Viring Till",
+          "dietary": null
+        },
+        {
+          "participantName": "PO Eriksson",
+          "dietary": null
+        },
+        {
+          "participantName": "Marcus Börling",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Fernholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Charlotte Gelin Bornudd",
+          "dietary": null
+        },
+        {
+          "participantName": "Marcus Lindholm",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrvit008t8w4njdgeh7d2",
+      "type": "meal",
+      "pin": "2002",
+      "hostNames": "Cecilia Krona; Niclas Krona",
+      "address": "Rosenvägen 9B",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:59.669Z",
+      "updatedAt": "2026-03-29T15:50:59.669Z",
+      "guests": [
+        {
+          "participantName": "Robert Till",
+          "dietary": null
+        },
+        {
+          "participantName": "Stina Bohman",
+          "dietary": null
+        },
+        {
+          "participantName": "Christofer Ekstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Jenny Hedberg",
+          "dietary": null
+        },
+        {
+          "participantName": "Maria Hellman",
+          "dietary": null
+        },
+        {
+          "participantName": "Mats Hellman",
+          "dietary": null
+        },
+        {
+          "participantName": "Ingela Lennerstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Daniel Andersson Collby",
+          "dietary": null
+        },
+        {
+          "participantName": "Mathias Lindner",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrvq500938w4nvsjsppzw",
+      "type": "meal",
+      "pin": "2003",
+      "hostNames": "Hanna Söderberg; Magnus Söderberg",
+      "address": "Rosenvägen 9A",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": "Parkera cykeln innanför häcken.",
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:50:59.933Z",
+      "updatedAt": "2026-03-30T21:38:08.555Z",
+      "guests": [
+        {
+          "participantName": "Börje Pettersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Sven-Åke Eklöf",
+          "dietary": null
+        },
+        {
+          "participantName": "Ulrika Eriksson",
+          "dietary": null
+        },
+        {
+          "participantName": "Juppe Carlsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Jörgen Jonsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Linda Ahlgren",
+          "dietary": null
+        },
+        {
+          "participantName": "Malin Olsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Milla Mohr",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrvzm009c8w4nl91iub76",
+      "type": "meal",
+      "pin": "2004",
+      "hostNames": "Mari Kumlien; Svante Kumlien",
+      "address": "Fasanvägen 10B",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:00.274Z",
+      "updatedAt": "2026-03-29T15:51:00.274Z",
+      "guests": [
+        {
+          "participantName": "Katarina Börling",
+          "dietary": null
+        },
+        {
+          "participantName": "Tomas Vidinghoff",
+          "dietary": null
+        },
+        {
+          "participantName": "Sara Blomberg",
+          "dietary": null
+        },
+        {
+          "participantName": "Per Eckerbom",
+          "dietary": "Persilja, exotiska frukter, nötter"
+        },
+        {
+          "participantName": "Emma Julin",
+          "dietary": null
+        },
+        {
+          "participantName": "Anette Kravik",
+          "dietary": null
+        },
+        {
+          "participantName": "Micke Kravik",
+          "dietary": null
+        },
+        {
+          "participantName": "Mattias Lindner",
+          "dietary": null
+        },
+        {
+          "participantName": "Linda Adwall",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrw8p009m8w4n0mx7zdzv",
+      "type": "meal",
+      "pin": "2005",
+      "hostNames": "Marie Linton; Hans Linton",
+      "address": "Rödhakevägen 27A",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:00.602Z",
+      "updatedAt": "2026-03-29T15:51:00.602Z",
+      "guests": [
+        {
+          "participantName": "Ellen Stavbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Christina Stenhammar",
+          "dietary": null
+        },
+        {
+          "participantName": "Johan Stenhammar",
+          "dietary": null
+        },
+        {
+          "participantName": "Tomas Gunnarsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Jennie Ekstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Mikael Gelin",
+          "dietary": null
+        },
+        {
+          "participantName": "Deborah McGott",
+          "dietary": null
+        },
+        {
+          "participantName": "Matthias Mohr",
+          "dietary": null
+        },
+        {
+          "participantName": "Markus Haukkala",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrwfy009w8w4negsx3pz2",
+      "type": "meal",
+      "pin": "2006",
+      "hostNames": "Monica Segelsjö; Olov Duvernoy",
+      "address": "Granebergsvägen 18 C",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:00.863Z",
+      "updatedAt": "2026-03-29T15:51:00.863Z",
+      "guests": [
+        {
+          "participantName": "Linda Ryttlefors",
+          "dietary": null
+        },
+        {
+          "participantName": "Mats Ryttlefors",
+          "dietary": null
+        },
+        {
+          "participantName": "Maria Öfverberg Eriksson",
+          "dietary": null
+        },
+        {
+          "participantName": "Magnus Blomberg",
+          "dietary": null
+        },
+        {
+          "participantName": "Sabine Gebert Persson",
+          "dietary": null
+        },
+        {
+          "participantName": "Christopher Juhlin",
+          "dietary": null
+        },
+        {
+          "participantName": "Johan Lennerstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Lena Liljeström",
+          "dietary": null
+        },
+        {
+          "participantName": "David McGott",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrwpi00a68w4n79b2hv2g",
+      "type": "meal",
+      "pin": "2007",
+      "hostNames": "Sofia Lernskog; Daniel Årvik",
+      "address": "Rosenvägen 52",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:01.206Z",
+      "updatedAt": "2026-03-29T15:51:01.206Z",
+      "guests": [
+        {
+          "participantName": "Oscar Diös",
+          "dietary": null
+        },
+        {
+          "participantName": "Marie Eklöf",
+          "dietary": null
+        },
+        {
+          "participantName": "Ronny Persson",
+          "dietary": "Avokado, nötter"
+        },
+        {
+          "participantName": "Anna Hårdstedt",
+          "dietary": null
+        },
+        {
+          "participantName": "Andreas Larsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Michell Julin",
+          "dietary": null
+        },
+        {
+          "participantName": "Ann-Carine Alm",
+          "dietary": null
+        },
+        {
+          "participantName": "Jenny Andersson Collby",
+          "dietary": "Nötter"
+        },
+        {
+          "participantName": "Carolina Björklund",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrwww00ag8w4nd9dsq67q",
+      "type": "meal",
+      "pin": "2008",
+      "hostNames": "Ulrica Hedman; Peter Stenlund",
+      "address": "Klippvägen 4",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:01.472Z",
+      "updatedAt": "2026-03-29T15:51:01.472Z",
+      "guests": [
+        {
+          "participantName": "Erika Terao",
+          "dietary": null
+        },
+        {
+          "participantName": "Peter Bohman",
+          "dietary": null
+        },
+        {
+          "participantName": "Lena Jonsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Kajsa Lindner Bennbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Mattias Lund",
+          "dietary": null
+        },
+        {
+          "participantName": "Daniel Adwall",
+          "dietary": null
+        },
+        {
+          "participantName": "Sigge Lind",
+          "dietary": null
+        },
+        {
+          "participantName": "Jenny Bexell",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrx6j00ap8w4nbbk0hig6",
+      "type": "meal",
+      "pin": "2009",
+      "hostNames": "Victoria Enkvist; Tommy Enkvist",
+      "address": "Häckvägen 6C",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:01.819Z",
+      "updatedAt": "2026-03-29T15:51:01.819Z",
+      "guests": [
+        {
+          "participantName": "Karin Eckerbom",
+          "dietary": null
+        },
+        {
+          "participantName": "LG Lundgren",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Lund",
+          "dietary": null
+        },
+        {
+          "participantName": "Marie-Louise Mattsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Per Mattsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Gustaf Björklund",
+          "dietary": null
+        },
+        {
+          "participantName": "Calle Håkansson",
+          "dietary": null
+        },
+        {
+          "participantName": "Tobias Ahlgren",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrxdq00ay8w4ngkp9m0tp",
+      "type": "meal",
+      "pin": "2010",
+      "hostNames": "Åsa Wallander Wetterqvist; Fredrik Wetterqvist",
+      "address": "Entitevägen 5",
+      "meal": "Varmrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:02.078Z",
+      "updatedAt": "2026-03-29T15:51:02.078Z",
+      "guests": [
+        {
+          "participantName": "Helena Pettersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Tomas Stavbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Peter Tedeholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Eva Hartman-Juhlin",
+          "dietary": null
+        },
+        {
+          "participantName": "Annika Kits",
+          "dietary": null
+        },
+        {
+          "participantName": "Marcus Andersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Per Liljeström",
+          "dietary": "Fisk, kyckling"
+        },
+        {
+          "participantName": "Kajsa Bennbom Lindner",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Olsson",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrxn100b88w4n1tmvmxx7",
+      "type": "meal",
+      "pin": "3001",
+      "hostNames": "Anette Kravik; Micke Kravik",
+      "address": "Ekvägen 1",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:02.413Z",
+      "updatedAt": "2026-03-29T15:51:02.413Z",
+      "guests": [
+        {
+          "participantName": "Tobias Norström",
+          "dietary": null
+        },
+        {
+          "participantName": "Hanna Söderberg",
+          "dietary": "Nötter, mandel, jordgubbar"
+        },
+        {
+          "participantName": "Oscar Diös",
+          "dietary": null
+        },
+        {
+          "participantName": "Stina Bohman",
+          "dietary": null
+        },
+        {
+          "participantName": "Ronny Persson",
+          "dietary": "Avokado, nötter"
+        },
+        {
+          "participantName": "Anna Hårdstedt",
+          "dietary": null
+        },
+        {
+          "participantName": "Marie-Louise Mattsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Marcus Lindholm",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrxwi00bh8w4n1sts2uj0",
+      "type": "meal",
+      "pin": "3002",
+      "hostNames": "Charlotte Gelin Bornudd; Mikael Gelin",
+      "address": "Lyssnavägen 6",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:02.754Z",
+      "updatedAt": "2026-03-29T15:51:02.754Z",
+      "guests": [
+        {
+          "participantName": "Tomas Stavbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Erika Terao",
+          "dietary": null
+        },
+        {
+          "participantName": "Marie Eklöf",
+          "dietary": null
+        },
+        {
+          "participantName": "Mats Hellman",
+          "dietary": null
+        },
+        {
+          "participantName": "Annika Kits",
+          "dietary": null
+        },
+        {
+          "participantName": "Johan Lennerstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Håkan Lidenholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Mattias Lindner",
+          "dietary": null
+        },
+        {
+          "participantName": "Deborah McGott",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxry3n00br8w4n5c5h2h95",
+      "type": "meal",
+      "pin": "3003",
+      "hostNames": "Emma Julin; Michell Julin",
+      "address": "Rälsvägen 21",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:03.011Z",
+      "updatedAt": "2026-03-29T15:51:03.011Z",
+      "guests": [
+        {
+          "participantName": "Mats Ryttlefors",
+          "dietary": null
+        },
+        {
+          "participantName": "Ellen Stavbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Peter Tedeholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Fredrik Wetterqvist",
+          "dietary": null
+        },
+        {
+          "participantName": "PO Eriksson",
+          "dietary": null
+        },
+        {
+          "participantName": "LG Lundgren",
+          "dietary": null
+        },
+        {
+          "participantName": "Ulrica Hedman",
+          "dietary": null
+        },
+        {
+          "participantName": "Marie Linton",
+          "dietary": null
+        },
+        {
+          "participantName": "Jenny Bexell",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrycn00c18w4n7nmwrfwc",
+      "type": "meal",
+      "pin": "3004",
+      "hostNames": "Eva Hartman-Juhlin; Christopher Juhlin",
+      "address": "Svankärrsvägen 3B",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:03.336Z",
+      "updatedAt": "2026-03-29T15:51:03.336Z",
+      "guests": [
+        {
+          "participantName": "Börje Pettersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Olov Duvernoy",
+          "dietary": null
+        },
+        {
+          "participantName": "Johanna Viring Till",
+          "dietary": null
+        },
+        {
+          "participantName": "Jennie Ekstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Krona",
+          "dietary": "Nötter, skaldjur"
+        },
+        {
+          "participantName": "Per Mattsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Daniel Andersson Collby",
+          "dietary": null
+        },
+        {
+          "participantName": "Milla Mohr",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxryjt00ca8w4nbwai16np",
+      "type": "meal",
+      "pin": "3005",
+      "hostNames": "Karin Eckerbom; Per Eckerbom",
+      "address": "Blåhakevägen 42",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:03.593Z",
+      "updatedAt": "2026-03-29T15:51:03.593Z",
+      "guests": [
+        {
+          "participantName": "Linda Ryttlefors",
+          "dietary": null
+        },
+        {
+          "participantName": "Magnus Söderberg",
+          "dietary": null
+        },
+        {
+          "participantName": "Sabine Gebert Persson",
+          "dietary": null
+        },
+        {
+          "participantName": "Niclas Krona",
+          "dietary": null
+        },
+        {
+          "participantName": "Anna Lidenholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Mattias Lund",
+          "dietary": null
+        },
+        {
+          "participantName": "David McGott",
+          "dietary": null
+        },
+        {
+          "participantName": "Jenny Andersson Collby",
+          "dietary": "Nötter"
+        }
+      ]
+    },
+    {
+      "id": "cmnbxryt000cj8w4n0rb0r8uf",
+      "type": "meal",
+      "pin": "3006",
+      "hostNames": "Katarina Börling; Marcus Börling",
+      "address": "Jägarvägen 19",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:03.924Z",
+      "updatedAt": "2026-03-29T15:51:03.924Z",
+      "guests": [
+        {
+          "participantName": "Nina Pettersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Christina Stenhammar",
+          "dietary": null
+        },
+        {
+          "participantName": "Christofer Ekstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Juppe Carlsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Maria Hellman",
+          "dietary": null
+        },
+        {
+          "participantName": "Svante Kumlien",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Lund",
+          "dietary": null
+        },
+        {
+          "participantName": "Sigge Lind",
+          "dietary": null
+        },
+        {
+          "participantName": "Carolina Björklund",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrz2m00ct8w4nqtn8c5ri",
+      "type": "meal",
+      "pin": "3007",
+      "hostNames": "Lena Jonsson; Jörgen Jonsson",
+      "address": "Skogsduvevägen 17 B",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:04.270Z",
+      "updatedAt": "2026-03-29T15:51:04.270Z",
+      "guests": [
+        {
+          "participantName": "Monica Segelsjö",
+          "dietary": "Nötter, mandel"
+        },
+        {
+          "participantName": "Sven-Åke Eklöf",
+          "dietary": null
+        },
+        {
+          "participantName": "Jenny Hedberg",
+          "dietary": null
+        },
+        {
+          "participantName": "Daniel Årvik",
+          "dietary": null
+        },
+        {
+          "participantName": "Kajsa Lindner Bennbom",
+          "dietary": null
+        },
+        {
+          "participantName": "Kajsa Bennbom Lindner",
+          "dietary": null
+        },
+        {
+          "participantName": "Calle Håkansson",
+          "dietary": null
+        },
+        {
+          "participantName": "Tobias Ahlgren",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrzd900d28w4nf6xp3u9d",
+      "type": "meal",
+      "pin": "3008",
+      "hostNames": "Lena Liljeström; Per Liljeström",
+      "address": "Jägarvägen 4",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:04.653Z",
+      "updatedAt": "2026-03-29T15:51:04.653Z",
+      "guests": [
+        {
+          "participantName": "Johan Stenhammar",
+          "dietary": null
+        },
+        {
+          "participantName": "Åsa Wallander Wetterqvist",
+          "dietary": null
+        },
+        {
+          "participantName": "Maria Öfverberg Eriksson",
+          "dietary": null
+        },
+        {
+          "participantName": "Tomas Gunnarsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Tomas Vidinghoff",
+          "dietary": null
+        },
+        {
+          "participantName": "Victoria Enkvist",
+          "dietary": null
+        },
+        {
+          "participantName": "Andreas Larsson",
+          "dietary": null
+        },
+        {
+          "participantName": "Mari Kumlien",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Olsson",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrzp300dc8w4nc0zg87df",
+      "type": "meal",
+      "pin": "3009",
+      "hostNames": "Linda Adwall; Daniel Adwall",
+      "address": "Domherrevägen 15a",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:05.079Z",
+      "updatedAt": "2026-03-29T15:51:05.079Z",
+      "guests": [
+        {
+          "participantName": "Peter Bohman",
+          "dietary": null
+        },
+        {
+          "participantName": "Ulrika Eriksson",
+          "dietary": null
+        },
+        {
+          "participantName": "Marcus Andersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Ingela Lennerstrand",
+          "dietary": null
+        },
+        {
+          "participantName": "Hans Linton",
+          "dietary": null
+        },
+        {
+          "participantName": "Linda Ahlgren",
+          "dietary": null
+        },
+        {
+          "participantName": "Mathias Lindner",
+          "dietary": null
+        },
+        {
+          "participantName": "Gustaf Björklund",
+          "dietary": null
+        },
+        {
+          "participantName": "Malin Olsson",
+          "dietary": null
+        }
+      ]
+    },
+    {
+      "id": "cmnbxrzz300dm8w4n9bmpgpsy",
+      "type": "meal",
+      "pin": "3010",
+      "hostNames": "Sara Blomberg; Magnus Blomberg",
+      "address": "Ormvråksvägen 3",
+      "meal": "Efterrätt",
+      "arrivalTime": null,
+      "hostNotes": null,
+      "guestInfo": null,
+      "pinSentAt": null,
+      "createdAt": "2026-03-29T15:51:05.411Z",
+      "updatedAt": "2026-03-29T15:51:05.411Z",
+      "guests": [
+        {
+          "participantName": "Helena Pettersson",
+          "dietary": null
+        },
+        {
+          "participantName": "Robert Till",
+          "dietary": null
+        },
+        {
+          "participantName": "Tommy Enkvist",
+          "dietary": null
+        },
+        {
+          "participantName": "Cecilia Fernholm",
+          "dietary": null
+        },
+        {
+          "participantName": "Peter Stenlund",
+          "dietary": null
+        },
+        {
+          "participantName": "Sofia Lernskog",
+          "dietary": null
+        },
+        {
+          "participantName": "Matthias Mohr",
+          "dietary": null
+        },
+        {
+          "participantName": "Ann-Carine Alm",
+          "dietary": null
+        },
+        {
+          "participantName": "Markus Haukkala",
+          "dietary": null
+        }
+      ]
+    }
+  ]
+}

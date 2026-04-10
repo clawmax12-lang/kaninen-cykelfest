@@ -63,8 +63,14 @@ export default async function handler(req: any, res: any) {
     const response = await app.fetch(request);
     res.statusCode = response.status;
     response.headers.forEach((value: string, key: string) => res.setHeader(key, value));
-    const responseText = await response.text();
-    res.end(responseText);
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('spreadsheetml') || contentType.includes('octet-stream')) {
+      const arrayBuffer = await response.arrayBuffer();
+      res.end(Buffer.from(arrayBuffer));
+    } else {
+      const responseText = await response.text();
+      res.end(responseText);
+    }
   } catch (err: any) {
     console.error("Handler error:", err);
     res.statusCode = 500;

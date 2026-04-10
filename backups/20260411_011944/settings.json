@@ -1,0 +1,25 @@
+{
+  "data": {
+    "app_open": "true",
+    "sos_contact1_name": "SOS",
+    "sos_contact3_name": "Taxi Uppsala",
+    "sos_contact3_number": "018150000",
+    "sos_contact2_name": "Kaninen",
+    "sos_contact1_number": "0707109789",
+    "sos_contact2_number": "0707109789",
+    "unlock_steg2": "2026-04-09T00:00",
+    "unlock_steg5": "2026-05-20T12:00",
+    "unlock_ditt_lag": "2026-05-30T12:00",
+    "unlock_poang": "2026-05-30T08:00",
+    "unlock_steg1": "2026-05-30T12:00",
+    "unlock_ledtrad_forratt": "2026-05-30T12:00",
+    "unlock_ledtrad_varmratt": "2026-05-30T12:00",
+    "unlock_ledtrad_efterratt": "2026-05-30T12:00",
+    "unlock_aterkoppling": "2026-05-30T12:00",
+    "unlock_steg6": "2026-05-30T12:00",
+    "unlock_steg7": "2026-05-30T16:00",
+    "unlock_steg8": "2026-05-30T18:00",
+    "unlock_vardinfo": "2026-05-30T12:00",
+    "test_qa": ""
+  }
+}

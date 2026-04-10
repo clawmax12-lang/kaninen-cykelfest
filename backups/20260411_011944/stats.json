@@ -1,0 +1,32 @@
+{
+  "data": {
+    "deltagare": {
+      "totalt": 106,
+      "bekraftade": 1,
+      "obekraftade": 105,
+      "medAllergier": 7,
+      "medTelefon": 95,
+      "vardar": 60,
+      "gaster": 46
+    },
+    "lag": {
+      "totalt": 10,
+      "medDeltagare": 10
+    },
+    "vardskap": {
+      "totalt": 30,
+      "medAdress": 30,
+      "medGastinfo": 1,
+      "totalGaster": 258
+    },
+    "fragor": {
+      "totalt": 2,
+      "besvarade": 2,
+      "obesvarade": 0
+    },
+    "omrostningar": {
+      "totalt": 11,
+      "totalRoster": 0
+    }
+  }
+}
