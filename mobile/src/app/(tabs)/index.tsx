@@ -371,15 +371,11 @@ export default function HomeScreen() {
             <Text style={styles.videoTitle} numberOfLines={1}>
               {currentVideo != null ? currentVideo.title : 'Kaninen dansar'}
             </Text>
-            <Text style={styles.videoDuration}>
-              {currentVideo != null
-                ? (() => {
-                    const minsAgo = Math.floor((Date.now() - new Date(currentVideo.publishedAt).getTime()) / 60000);
-                    const timeStr = minsAgo < 60 ? `${minsAgo} min sedan` : minsAgo < 1440 ? `${Math.floor(minsAgo / 60)} tim sedan` : `${Math.floor(minsAgo / 1440)} dagar sedan`;
-                    return `${timeStr}${currentVideo.durationSeconds != null ? ` · ${Math.floor(currentVideo.durationSeconds / 60)}:${String(currentVideo.durationSeconds % 60).padStart(2, '0')}` : ''}`;
-                  })()
-                : '0 min sedan'}
-            </Text>
+            {currentVideo != null && currentVideo.durationSeconds != null && (
+              <Text style={styles.videoDuration}>
+                {`${Math.floor(currentVideo.durationSeconds / 60)}:${String(currentVideo.durationSeconds % 60).padStart(2, '0')}`}
+              </Text>
+            )}
           </View>
           {latestVideos.length > 1 ? (
             <TouchableOpacity
