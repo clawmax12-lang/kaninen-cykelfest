@@ -1455,33 +1455,15 @@ export default function AdminScreen() {
                                 <TouchableOpacity
                                   style={{ backgroundColor: 'rgba(255,255,255,0.18)', borderRadius: 8, paddingVertical: 10, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(255,255,255,0.3)' }}
                                   onPress={() => {
-                                    Alert.alert(
-                                      'Skicka pinkod till värd',
-                                      `Skicka PIN-kod ${ha.pin} till ${p.name}?\n\nSMS skickas till ${p.phone ?? 'okänt nummer'}.`,
-                                      [
-                                        { text: 'Avbryt', style: 'cancel' },
-                                        { text: 'Skicka', style: 'default', onPress: async () => {
-                                          try {
-                                            const res = await api.post<{ sent: { name: string; phone: string; status: string }[]; pinSentAt?: string }>(`/api/cykelfest/host-assignments/${ha.id}/send-pin-sms`, {});
-                                            const sent = res?.sent ?? [];
-                                            if (sent.length === 0) {
-                                              Alert.alert('Inget skickat', 'Inget telefonnummer hittades för denna värd.');
-                                            } else {
-                                              // Update local state with sent timestamp
-                                              if (res?.pinSentAt) {
-                                                setHostAssignments(prev => prev.map(a => a.id === ha.id ? { ...a, pinSentAt: res.pinSentAt ?? null } : a));
-                                              }
-                                              Alert.alert('SMS skickat!', sent.map(s => `${s.name}: ${s.status}`).join('\n'));
-                                            }
-                                          } catch (e: any) {
-                                            Alert.alert('Fel', e?.message ?? 'Kunde inte skicka SMS. Kontrollera att ELKS_API_USERNAME och ELKS_API_PASSWORD är satta i ENV-fliken.');
-                                          }
-                                        }},
-                                      ]
-                                    );
+                                    const msg = `Hej ${p.name}! Din pinkod för värdskapet är: ${ha.pin}. Logga in i appen under "Mitt värdskap".`;
+                                    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+                                      navigator.clipboard.writeText(msg).then(() => Alert.alert('Kopierat!', 'Meddelande kopierat till urklipp. Klistra in i SMS/meddelande.'));
+                                    } else {
+                                      Alert.alert('Pinkod', msg);
+                                    }
                                   }}
                                 >
-                                  <Text style={{ fontFamily: 'DMSans_700Bold', fontSize: 13, color: '#fff', letterSpacing: 0.3 }}>Skicka pinkod till värd</Text>
+                                  <Text style={{ fontFamily: 'DMSans_700Bold', fontSize: 13, color: '#fff', letterSpacing: 0.3 }}>Kopiera pinkod-meddelande</Text>
                                 </TouchableOpacity>
                               </View>
                             );
@@ -2155,33 +2137,19 @@ export default function AdminScreen() {
                             </View>
                             {/* Åtgärdsknappar */}
                             <View style={{ gap: 6, marginTop: 12 }}>
-                              {/* SMS — hel bredd */}
+                              {/* Kopiera PIN-meddelande */}
                               <TouchableOpacity
                                 style={{ backgroundColor: '#D6EDD9', borderRadius: 8, paddingHorizontal: 14, paddingVertical: 10, alignItems: 'center' }}
                                 onPress={() => {
-                                  Alert.alert(
-                                    'Skicka PIN via SMS',
-                                    `Skicka PIN-kod ${a.pin} till ${a.hostNames}?\n\nSMS skickas till det telefonnummer som angetts vid anmälan.`,
-                                    [
-                                      { text: 'Avbryt', style: 'cancel' },
-                                      { text: 'Skicka', style: 'default', onPress: async () => {
-                                        try {
-                                          const res = await api.post<{ sent: { name: string; phone: string; status: string }[] }>(`/api/cykelfest/host-assignments/${a.id}/send-pin-sms`, {});
-                                          const sent = res?.sent ?? [];
-                                          if (sent.length === 0) {
-                                            Alert.alert('Inget skickat', 'Inga telefonnummer hittades för värdparet.');
-                                          } else {
-                                            Alert.alert('SMS skickat!', sent.map(s => `${s.name}: ${s.status}`).join('\n'));
-                                          }
-                                        } catch (e: any) {
-                                          Alert.alert('Fel', e?.message ?? 'Kunde inte skicka SMS. Kontrollera att ELKS_API_USERNAME och ELKS_API_PASSWORD är satta i ENV-fliken.');
-                                        }
-                                      }},
-                                    ]
-                                  );
+                                  const msg = `Kaninens cykelfest 2026 — Din pinkod för värdskapet (${a.meal ?? 'måltiden'}) är: ${a.pin}. Logga in i appen under "Mitt värdskap".`;
+                                  if (typeof navigator !== 'undefined' && navigator.clipboard) {
+                                    navigator.clipboard.writeText(msg).then(() => Alert.alert('Kopierat!', 'Meddelande kopierat till urklipp. Klistra in i SMS/meddelande.'));
+                                  } else {
+                                    Alert.alert('Pinkod-meddelande', msg);
+                                  }
                                 }}
                               >
-                                <Text style={{ fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: '#1A5C2A' }}>Skicka PIN via SMS</Text>
+                                <Text style={{ fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: '#1A5C2A' }}>Kopiera pinkod-meddelande</Text>
                               </TouchableOpacity>
                               {/* Redigera + Ta bort på samma rad */}
                               <View style={{ flexDirection: 'row', gap: 8 }}>
@@ -3673,7 +3641,6 @@ export default function AdminScreen() {
                   const fmt = (d: Date) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
                   const fmtTime = (d: Date) => `${fmt(d)}T${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
                   await Promise.all([
-                    api.post('/api/cykelfest/settings/unlock_steg1', { value: fmtTime(steg1UnlockDate) }),
                     api.post('/api/cykelfest/settings/unlock_steg2', { value: fmtTime(steg2UnlockDate) }),
                     api.post('/api/cykelfest/settings/unlock_ditt_lag', { value: fmtTime(lagUnlockDate) }),
                     api.post('/api/cykelfest/settings/unlock_vardinfo', { value: fmtTime(vardinfoUnlockDate) }),

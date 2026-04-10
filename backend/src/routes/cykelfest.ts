@@ -468,12 +468,11 @@ cykelfestRouter.post("/polls/:id/vote", async (c) => {
   const body = await c.req.json();
   const deviceId = body.participantId ?? body.voterId;
   if (!deviceId) return c.json({ error: { message: "participantId required" } }, 400);
-  // Find or create an anonymous participant keyed by device UUID (accessCode)
+  // Look up existing participant by accessCode (device UUID)
   let participant = await prisma.participant.findUnique({ where: { accessCode: deviceId } });
   if (!participant) {
-    participant = await prisma.participant.create({
-      data: { name: "Anonym", accessCode: deviceId, role: "guest" },
-    });
+    // No matching participant — store vote locally on device only, do not create Anonym records
+    return c.json({ data: { pollId: id, participantId: deviceId, optionIndex: body.optionIndex, local: true } });
   }
   const vote = await prisma.pollVote.upsert({
     where: { pollId_participantId: { pollId: id, participantId: participant.id } },
@@ -841,7 +840,7 @@ cykelfestRouter.put('/program-stops/:id', async (c) => {
 // GET /stats — real-time statistics for admin
 cykelfestRouter.get("/stats", async (c) => {
   const [participants, teams, hostAssignments, questions, polls] = await Promise.all([
-    prisma.participant.findMany({ select: { id: true, confirmed: true, dietary: true, role: true, phone: true } }),
+    prisma.participant.findMany({ select: { id: true, name: true, confirmed: true, dietary: true, role: true, phone: true } }),
     prisma.team.findMany({ include: { participants: true } }),
     prisma.hostAssignment.findMany({ include: { guests: true } }),
     prisma.question.findMany({ select: { id: true, answer: true } }),
@@ -852,8 +851,15 @@ cykelfestRouter.get("/stats", async (c) => {
   const confirmedParticipants = participants.filter(p => p.confirmed).length;
   const withDietary = participants.filter(p => p.dietary && p.dietary.trim() !== '').length;
   const withPhone = participants.filter(p => p.phone && p.phone.trim() !== '').length;
-  const hosts = participants.filter(p => p.role === 'host').length;
-  const guests = participants.filter(p => p.role === 'guest').length;
+  // Compute host count dynamically from host assignments
+  const hostNameSet = new Set<string>();
+  for (const ha of hostAssignments) {
+    if (ha.hostNames) {
+      ha.hostNames.split(/[;&]/).map((n: string) => n.trim()).filter(Boolean).forEach((n: string) => hostNameSet.add(n.toLowerCase()));
+    }
+  }
+  const hosts = participants.filter(p => hostNameSet.has(p.name?.toLowerCase() ?? '')).length;
+  const guests = totalParticipants - hosts;
 
   const totalTeams = teams.length;
   const teamsWithMembers = teams.filter(t => t.participants.length > 0).length;
