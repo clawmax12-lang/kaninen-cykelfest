@@ -295,7 +295,8 @@ cykelfestRouter.get("/teams", async (c) => {
 
 cykelfestRouter.post("/teams", async (c) => {
   const body = await c.req.json();
-  const team = await prisma.team.create({ data: body });
+  if (!body.name || !body.name.trim()) return c.json({ error: { message: "Team name is required" } }, 400);
+  const team = await prisma.team.create({ data: { ...body, name: body.name.trim() } });
   return c.json({ data: team });
 });
 
@@ -456,9 +457,9 @@ cykelfestRouter.put("/polls/:id", async (c) => {
 
 cykelfestRouter.delete("/polls/:id", async (c) => {
   const id = c.req.param("id");
+  // Clear any News items that reference this poll first
+  await prisma.$executeRaw`UPDATE "News" SET "pollId" = NULL WHERE "pollId" = ${id}`;
   await prisma.poll.delete({ where: { id } });
-  // Clear any News items that reference this poll
-  await prisma.$executeRaw`UPDATE News SET pollId = NULL WHERE pollId = ${id}`;
   return c.json({ data: { ok: true } });
 });
 
@@ -938,7 +939,8 @@ cykelfestRouter.get("/participants/confirmation-status", async (c) => {
 cykelfestRouter.patch("/participants/:id/confirm", async (c) => {
   const id = c.req.param("id");
   const body = await c.req.json<{ phone?: string; address?: string; dietary?: string }>().catch(() => ({ phone: undefined, address: undefined, dietary: undefined }));
-  const updateData: { confirmed: boolean; phone?: string | null; address?: string | null; dietary?: string | null } = { confirmed: true };
+  const confirmed = (body as any).confirmed !== undefined ? !!(body as any).confirmed : true;
+  const updateData: { confirmed: boolean; phone?: string | null; address?: string | null; dietary?: string | null } = { confirmed };
   // Only update fields that were explicitly included in the request body
   if ("phone" in body) updateData.phone = body.phone?.trim() || null;
   if ("address" in body) updateData.address = body.address?.trim() || null;
@@ -1243,7 +1245,7 @@ cykelfestRouter.post("/host-assignments/:id/send-pin-sms", async (c) => {
   if (!assignment) return c.json({ error: { message: "Värdskap hittades inte" } }, 404);
 
   // Find phone numbers for hosts by matching names against participants
-  const hostNames = assignment.hostNames.split("&").map((n: string) => n.trim()).filter(Boolean);
+  const hostNames = assignment.hostNames.split(/[;&]/).map((n: string) => n.trim()).filter(Boolean);
   const participants = await prisma.participant.findMany({
     where: { name: { in: hostNames } },
     select: { name: true, phone: true },
