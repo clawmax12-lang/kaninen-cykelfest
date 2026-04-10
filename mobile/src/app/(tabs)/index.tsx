@@ -498,7 +498,7 @@ export default function HomeScreen() {
             </View>
           )}
           <View style={styles.timelineContent}>
-            <Text style={steg2Unlocked ? styles.timelineTitleActive : styles.timelineTitle}>Bekräfta anmälan</Text>
+            <Text style={steg2Unlocked ? styles.timelineTitleActive : styles.timelineTitle}>Bekräfta deltagande</Text>
             <Text style={steg2Unlocked ? styles.timelineSubActive : styles.timelineSub} numberOfLines={1}>
               {steg2Unlocked ? 'Bekräfta ditt deltagande' : 'Ännu inte tillgänglig'}
             </Text>

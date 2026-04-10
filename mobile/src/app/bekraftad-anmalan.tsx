@@ -190,7 +190,7 @@ export default function BekraftadAnmalanScreen() {
         </Pressable>
 
         <View style={styles.headerTextBlock}>
-          <Text style={styles.headerTitle}>Bekräfta anmälan</Text>
+          <Text style={styles.headerTitle}>Bekräfta deltagande</Text>
           <Text style={styles.headerSubtitle}>Kaninens Cykelfest 2026</Text>
         </View>
       </LinearGradient>

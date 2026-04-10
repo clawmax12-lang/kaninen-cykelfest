@@ -1878,7 +1878,7 @@ export default function AdminScreen() {
           <View style={{ gap: 10, paddingHorizontal: 4 }}>
             {[
               { label: 'Intresseanmälan',  settingKey: 'unlock_steg1', sub: 'Personer som anmält intresse', emoji: '✋', colors: ['#D4A017', '#A07810'] },
-              { label: 'Bekräfta anmälan', settingKey: 'unlock_steg2', sub: 'Bekräftelse av deltagande',     emoji: '✅', colors: ['#1E8449', '#145A32'] },
+              { label: 'Bekräfta deltagande', settingKey: 'unlock_steg2', sub: 'Bekräftelse av deltagande',     emoji: '✅', colors: ['#1E8449', '#145A32'] },
               { label: 'Mitt lag',         settingKey: 'unlock_ditt_lag', sub: 'Lagindelning och laginfo',  emoji: '🚴', colors: ['#2471A3', '#1A5276'] },
               { label: 'Mitt värdskap',    settingKey: 'unlock_vardinfo', sub: 'Värdskapsinfo och gästlista', emoji: '🏡', colors: ['#CA6F1E', '#A04000'] },
               { label: 'Adress & info',    settingKey: 'unlock_steg5', sub: 'Adress till förrätten & klädsel', emoji: '📍', colors: ['#7D3C98', '#5B2C6F'] },
