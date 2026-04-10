@@ -279,6 +279,7 @@ cykelfestRouter.put("/news/:id", async (c) => {
       body: body.body,
       type: body.type,
       ...(body.pollId !== undefined ? { pollId: body.pollId } : {}),
+      ...(body.createdAt ? { createdAt: new Date(body.createdAt) } : {}),
     },
   });
   return c.json({ data: news });

@@ -396,7 +396,7 @@ export default function HomeScreen() {
       {/* NYHETER */}
       <Animated.View entering={FadeIn.delay(150)} style={styles.section}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionLabel}>MEDDELANDE FRÅN KANINEN</Text>
+          <Text style={styles.sectionLabel}>MEDDELANDE</Text>
           <TouchableOpacity onPress={() => router.push('/nyheter' as any)} testID="visa-allt-button">
             <Text style={styles.sectionLink}>Se alla →</Text>
           </TouchableOpacity>
