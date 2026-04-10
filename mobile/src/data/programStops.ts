@@ -42,6 +42,8 @@ export const STOPS: ProgramStop[] = [
     accentColor: '#2A7A5E',
     cardType: 'activity',
     hiddenText: 'En jordglob betyder så mycket',
+    rules: 'Lagen tävlar mot varandra. Alla i laget måste delta. Inga hjälpmedel tillåtna.',
+    scoring: 'Vinnarlaget får 10 poäng, tvåan 9 poäng, trean 8 poäng och så vidare.',
   },
   {
     id: 'middag',
@@ -68,6 +70,8 @@ export const STOPS: ProgramStop[] = [
     accentColor: '#2A7A5E',
     cardType: 'activity',
     hiddenText: 'Jorden runt på sextio minuter',
+    rules: 'Lagen tävlar mot varandra. Alla i laget måste delta. Inga hjälpmedel tillåtna.',
+    scoring: 'Vinnarlaget får 10 poäng, tvåan 9 poäng, trean 8 poäng och så vidare.',
   },
   {
     id: 'efterratt',
@@ -95,5 +99,7 @@ export const STOPS: ProgramStop[] = [
     accentColor: '#1C4F4A',
     cardType: 'party',
     hideLocation: true,
+    rules: 'Lagen tävlar mot varandra. Alla i laget måste delta. Inga hjälpmedel tillåtna.',
+    scoring: 'Vinnarlaget får 10 poäng, tvåan 9 poäng, trean 8 poäng och så vidare.',
   },
 ];

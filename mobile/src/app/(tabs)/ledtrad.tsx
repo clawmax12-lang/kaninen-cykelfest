@@ -5,13 +5,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { api } from '@/lib/api/api';
-import { Lock } from 'lucide-react-native';
 import PressableScale from '@/components/PressableScale';
 
 const CARDS = [
   {
     id: 'forratt',
     title: 'Ledtrådar förrätt',
+    subtitle: 'Svara rätt för platsen till Gruppaktivitet 1',
     emoji: '🥗',
     course: 'förrätt',
     colors: ['#2E6B4A', '#1C4F32'] as [string, string],
@@ -19,6 +19,7 @@ const CARDS = [
   {
     id: 'varmratt',
     title: 'Ledtrådar varmrätt',
+    subtitle: 'Svara rätt för platsen till Gruppaktivitet 2',
     emoji: '🍖',
     course: 'varmrätt',
     colors: ['#7A2E2E', '#5C1E1E'] as [string, string],
@@ -26,6 +27,7 @@ const CARDS = [
   {
     id: 'efterratt',
     title: 'Ledtrådar efterrätt',
+    subtitle: 'Svara rätt för platsen till avslutningsfesten',
     emoji: '🍮',
     course: 'efterrätt',
     colors: ['#4A2E7A', '#321C5C'] as [string, string],
@@ -142,21 +144,28 @@ export default function LedtradScreen() {
                 router.push(`/destination-quiz?course=${card.course}`);
               }}
             >
-              <LinearGradient colors={card.colors} style={styles.card}>
-                <View style={styles.cardEmojiWrap}>
-                  <Text style={styles.cardEmoji}>{card.emoji}</Text>
-                  {hasNew && unlocked ? <View style={styles.notifDot} /> : null}
-                </View>
-                <Text style={styles.cardTitle}>{card.title}</Text>
-                <Text style={styles.cardSubtitle}>Svara rätt för att avslöja destinationen</Text>
-                {!unlocked ? (
-                  <View style={styles.lockOverlay}>
-                    <Lock size={28} color="#FFFFFF" />
-                    <Text style={styles.lockText}>
-                      {unlockLabel || 'Låst'}
-                    </Text>
-                  </View>
-                ) : null}
+              <LinearGradient
+                colors={unlocked ? card.colors : ['#C4814A', '#9E5824']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={[styles.card, !unlocked && { opacity: 0.85 }]}
+              >
+                {unlocked ? (
+                  <>
+                    <View style={styles.cardEmojiWrap}>
+                      <Text style={styles.cardEmoji}>{card.emoji}</Text>
+                      {hasNew ? <View style={styles.notifDot} /> : null}
+                    </View>
+                    <Text style={styles.cardTitle}>{card.title}</Text>
+                    <Text style={styles.cardSubtitle}>{card.subtitle}</Text>
+                  </>
+                ) : (
+                  <>
+                    <Text style={styles.lockEmoji}>🔒</Text>
+                    <Text style={styles.cardTitle}>{card.title}</Text>
+                    <Text style={styles.lockSub}>{unlockLabel || 'Låst'}</Text>
+                  </>
+                )}
               </LinearGradient>
             </PressableScale>
           );
@@ -231,22 +240,14 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,0.7)',
     textAlign: 'center',
   },
-  lockOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.55)',
-    borderRadius: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
+  lockEmoji: {
+    fontSize: 28,
+    marginBottom: 6,
   },
-  lockText: {
-    fontFamily: 'DMSans_600SemiBold',
-    fontSize: 14,
-    color: '#FFFFFF',
-    letterSpacing: 0.3,
+  lockSub: {
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 12,
+    color: 'rgba(255,255,255,0.75)',
+    marginTop: 4,
   },
 });

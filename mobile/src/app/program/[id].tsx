@@ -22,7 +22,7 @@ export default function ProgramDetailScreen() {
   const insets = useSafeAreaInsets();
   const settings = useAppStore((s) => s.settings);
   const setSettings = useAppStore((s) => s.setSettings);
-  const todayStr = new Date().toISOString().split('T')[0];
+  const nowStr = (() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}T${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`; })();
 
   // Ladda settings om de saknas (t.ex. om användaren navigerar hit direkt)
   useEffect(() => {
@@ -37,8 +37,8 @@ export default function ProgramDetailScreen() {
   const isEfterratt = id === 'efterratt';
 
   const unlockKey = isForrat ? 'unlock_steg5' : isMiddag ? 'unlock_steg7' : isEfterratt ? 'unlock_steg8' : 'unlock_steg5';
-  const unlockDateStr = settings[unlockKey]?.split('T')[0] ?? null;
-  const adressUnlocked = unlockDateStr ? todayStr >= unlockDateStr : false;
+  const unlockVal = settings[unlockKey] ?? null;
+  const adressUnlocked = unlockVal ? nowStr >= unlockVal : false;
   const adressDateLabel = (() => {
     const val = settings[unlockKey];
     if (!val) return 'festdagen';

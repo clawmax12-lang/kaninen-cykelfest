@@ -317,14 +317,16 @@ export default function PoangScreen() {
           <Text style={styles.headerTitle}>Poäng</Text>
         </LinearGradient>
         <View style={styles.lockContent}>
-          <View style={styles.lockCard}>
-            <Lock size={36} color="#1C4F4A" />
-            <Text style={styles.lockTitle}>Aktiveras vid Aktivitet 1</Text>
-            <Text style={styles.lockSub}>
-              Poängtavlan öppnas när Aktivitet 1 börjar. Lagnamnen avslöjas då
-              också!
-            </Text>
-          </View>
+          <LinearGradient
+            colors={['#C4814A', '#9E5824']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={styles.lockCardGradient}
+          >
+            <Text style={styles.lockEmoji}>🔒</Text>
+            <Text style={styles.lockGradientTitle}>Poäng</Text>
+            <Text style={styles.lockGradientSub}>Öppnas när Cykelfesten börjar</Text>
+          </LinearGradient>
         </View>
       </View>
     );
@@ -622,7 +624,27 @@ const styles = StyleSheet.create({
   lockContent: {
     flex: 1,
     justifyContent: 'center',
-    padding: 16,
+    padding: 22,
+  },
+  lockCardGradient: {
+    borderRadius: 14,
+    padding: 20,
+    alignItems: 'center',
+  },
+  lockEmoji: {
+    fontSize: 28,
+    marginBottom: 6,
+  },
+  lockGradientTitle: {
+    fontFamily: 'DMSerifDisplay_400Regular',
+    fontSize: 22,
+    color: '#fff',
+  },
+  lockGradientSub: {
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 12,
+    color: 'rgba(255,255,255,0.75)',
+    marginTop: 4,
   },
   lockCard: {
     backgroundColor: '#fff',

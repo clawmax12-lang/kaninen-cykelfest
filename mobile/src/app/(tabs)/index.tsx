@@ -121,14 +121,14 @@ export default function HomeScreen() {
   }, [videoPlaying, videoPlayer]);
 
   // Compare dates as local YYYY-MM-DD strings to avoid UTC timezone offset issues
-  const todayStr = (() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}` })();
-  const steg1Unlocked = settings['unlock_steg1'] ? todayStr >= settings['unlock_steg1'] : true;
-  const steg2Unlocked = settings['unlock_steg2'] ? todayStr >= settings['unlock_steg2'] : true;
+  const nowStr = (() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}T${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`; })();
+  const steg1Unlocked = settings['unlock_steg1'] ? nowStr >= settings['unlock_steg1'] : true;
+  const steg2Unlocked = settings['unlock_steg2'] ? nowStr >= settings['unlock_steg2'] : true;
   const lagUnlocked = settings['unlock_ditt_lag']
-    ? todayStr >= settings['unlock_ditt_lag']
+    ? nowStr >= settings['unlock_ditt_lag']
     : false;
   const vardinfoUnlocked = settings['unlock_vardinfo']
-    ? todayStr >= settings['unlock_vardinfo']
+    ? nowStr >= settings['unlock_vardinfo']
     : false;
 
   const safeDate = (val: string | undefined, fallback: string) => {
@@ -140,11 +140,10 @@ export default function HomeScreen() {
   const lagDateLabel = safeDate(settings['unlock_ditt_lag'], '20 april');
   const vardinfoDateLabel = safeDate(settings['unlock_vardinfo'], '20 april');
   const adressUnlocked = settings['unlock_steg5']
-    ? todayStr >= settings['unlock_steg5']
+    ? nowStr >= settings['unlock_steg5']
     : false;
   const adressDateLabel = safeDate(settings['unlock_steg5'], 'festdagen');
 
-  const nowStr = (() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}T${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`; })();
   const aterkopplingUnlocked = settings['unlock_aterkoppling']
     ? nowStr >= settings['unlock_aterkoppling']
     : false;

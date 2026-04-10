@@ -23,9 +23,9 @@ type DQuestion = { id: string; question: string; options: string; correctAnswer:
 type DQuiz = { id: string; course: string; imageUrl: string | null; questions: DQuestion[] };
 
 const COURSE_CONFIG = {
-  'förrätt': { label: 'Förrätt', activityTitle: 'Ledtrådar förrätt' },
-  'varmrätt': { label: 'Varmrätt', activityTitle: 'Ledtrådar varmrätt' },
-  'efterrätt': { label: 'Efterrätt', activityTitle: 'Ledtrådar efterrätt' },
+  'förrätt': { label: 'Förrätt', activityTitle: 'Ledtrådar förrätt', destination: 'Gruppaktivitet 1', arrivalTime: '16:45', subtitle: 'Svara rätt för platsen till Gruppaktivitet 1' },
+  'varmrätt': { label: 'Varmrätt', activityTitle: 'Ledtrådar varmrätt', destination: 'Gruppaktivitet 2', arrivalTime: '19:45', subtitle: 'Svara rätt för platsen till Gruppaktivitet 2' },
+  'efterrätt': { label: 'Efterrätt', activityTitle: 'Ledtrådar efterrätt', destination: 'Avslutningsfesten', arrivalTime: '22:00', subtitle: 'Svara rätt för platsen till avslutningsfesten' },
 };
 
 const BLUR_LEVELS = [100, 90, 75, 55, 28, 0];
@@ -92,11 +92,63 @@ function AudioPlayer({ url, label }: { url: string; label: string | null }) {
   );
 }
 
-export default function DestinationQuizScreen() {
+class QuizErrorBoundary extends React.Component<{ children: React.ReactNode; storageKey: string }, { hasError: boolean }> {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() { return { hasError: true }; }
+  componentDidCatch() {
+    // Clear corrupted progress on crash
+    AsyncStorage.removeItem(this.props.storageKey).catch(() => {});
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <View style={{ flex: 1, backgroundColor: '#E5DFD1', alignItems: 'center', justifyContent: 'center', padding: 32 }}>
+          <Text style={{ fontFamily: 'DMSerifDisplay_400Regular', fontSize: 22, color: '#2A2A2A', marginBottom: 12 }}>Något gick fel</Text>
+          <Text style={{ fontFamily: 'DMSans_400Regular', fontSize: 14, color: '#7A7060', textAlign: 'center', marginBottom: 20 }}>Quiz-data har nollställts. Tryck för att försöka igen.</Text>
+          <TouchableOpacity
+            style={{ backgroundColor: '#1C4F4A', borderRadius: 10, paddingHorizontal: 24, paddingVertical: 12 }}
+            onPress={() => this.setState({ hasError: false })}
+          >
+            <Text style={{ fontFamily: 'DMSans_600SemiBold', fontSize: 14, color: '#fff' }}>Försök igen</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+export default function DestinationQuizWrapper() {
+  const { course: rawCourse } = useLocalSearchParams<{ course: string }>();
+  const course = (() => {
+    const c = rawCourse ?? 'förrätt';
+    if (c in COURSE_CONFIG) return c;
+    try { const d = decodeURIComponent(c); if (d in COURSE_CONFIG) return d; } catch {}
+    return 'förrätt';
+  })();
+  const storageKey = `dest_quiz_progress_${course}`;
+  return (
+    <QuizErrorBoundary storageKey={storageKey}>
+      <DestinationQuizScreenInner />
+    </QuizErrorBoundary>
+  );
+}
+
+function DestinationQuizScreenInner() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
-  const { course } = useLocalSearchParams<{ course: string }>();
-  const config = COURSE_CONFIG[course as keyof typeof COURSE_CONFIG] ?? COURSE_CONFIG['förrätt'];
+  const { course: rawCourse } = useLocalSearchParams<{ course: string }>();
+  const course = (() => {
+    const c = rawCourse ?? 'förrätt';
+    // Expo Router may or may not decode the param on web
+    if (c in COURSE_CONFIG) return c;
+    try { const d = decodeURIComponent(c); if (d in COURSE_CONFIG) return d; } catch {}
+    return 'förrätt';
+  })();
+  const config = COURSE_CONFIG[course as keyof typeof COURSE_CONFIG];
   const storageKey = `dest_quiz_progress_${course}`;
 
   const [quiz, setQuiz] = useState<DQuiz | null>(null);
@@ -237,10 +289,10 @@ export default function DestinationQuizScreen() {
         ) : (
           <>
             <Text style={styles.sectionLabel}>PLATSEN DIT NI SKA</Text>
-            <Text style={styles.competitionTitle}>Gruppaktivitet 1</Text>
+            <Text style={styles.competitionTitle}>{config.destination}</Text>
 
             <Text style={[styles.sectionLabel, { marginTop: 20 }]}>SENASTE ANKOMSTTID</Text>
-            <Text style={styles.timeValue}>16:45</Text>
+            <Text style={styles.timeValue}>{config.arrivalTime}</Text>
 
             <Text style={[styles.sectionLabel, { marginTop: 20 }]}>PLATS</Text>
             <View style={styles.imageWrapper}>
