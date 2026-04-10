@@ -9,6 +9,7 @@ import ExcelJS from "exceljs";
 import { readFileSync, existsSync, mkdirSync, writeFileSync } from "fs";
 import { join, extname } from "path";
 import { randomUUID } from "crypto";
+import { generatePlaneringsdokument } from "./export-planeringsdokument.js";
 
 // Resolve path to files shipped with the backend
 function backendFile(...parts: string[]): string {
@@ -146,6 +147,21 @@ app.get("/api/cykelfest/download-algoritm", async (c) => {
     headers: {
       "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "Content-Disposition": `attachment; filename="cykelfest_2026_${dateStr}.xlsx"`,
+      "Cache-Control": "no-cache",
+    },
+  });
+});
+
+// Download full planeringsdokument (6-sheet Excel identical to manual version)
+app.get("/api/cykelfest/download-planeringsdokument", async (c) => {
+  const buf = await generatePlaneringsdokument();
+  const now = new Date();
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const dateStr = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}`;
+  return new Response(new Uint8Array(buf), {
+    headers: {
+      "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "Content-Disposition": `attachment; filename="Cykelfest_2026_${dateStr}.xlsx"`,
       "Cache-Control": "no-cache",
     },
   });
