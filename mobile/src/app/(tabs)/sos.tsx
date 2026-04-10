@@ -35,7 +35,7 @@ export default function SOSScreen() {
           <LinearGradient colors={['#1C4F4A', '#2A6B64']} style={styles.mainCallGrad}>
             <Phone size={28} color="#A8D4B8" />
             <View>
-              <Text style={styles.mainCallTitle}>Ring för hjälp</Text>
+              <Text style={styles.mainCallTitle}>Ring Kaninen för hjälp</Text>
               <Text style={styles.mainCallSub}>Kaninen är alltid nåbar</Text>
             </View>
           </LinearGradient>
