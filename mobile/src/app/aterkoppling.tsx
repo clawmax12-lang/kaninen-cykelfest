@@ -171,7 +171,7 @@ export default function AterkopplingScreen() {
             <Animated.View style={{ opacity: fadeAnim }}>
               {isQuestionStep ? (
                 <View style={styles.quizArea} testID={`question-step-${currentStep}`}>
-                  <Text style={styles.stepCounter}>FRÅGA {currentStep + 1} AV 4</Text>
+                  <Text style={styles.stepCounter}>FRÅGA {currentStep + 1} AV 5</Text>
                   <Text style={styles.questionText}>{questions[currentStep]?.question}</Text>
 
                   {(questions[currentStep]?.options ?? []).map((opt: string, i: number) => {
@@ -208,12 +208,12 @@ export default function AterkopplingScreen() {
                 </View>
               ) : isCommentStep ? (
                 <View style={styles.quizArea} testID="comment-step">
-                  <Text style={styles.stepLabel}>ÖVRIGA KOMMENTARER</Text>
-                  <Text style={styles.questionText}>Något mer du vill dela med dig av?</Text>
+                  <Text style={styles.stepCounter}>FRÅGA 5 AV 5</Text>
+                  <Text style={styles.questionText}>Vad skulle du förbättra till nästa gång?</Text>
 
                   <TextInput
                     style={styles.commentInput}
-                    placeholder="Skriv gärna vad du tyckte..."
+                    placeholder="Tips, idéer eller förbättringsförslag..."
                     placeholderTextColor="#B0A898"
                     value={comment}
                     onChangeText={setComment}

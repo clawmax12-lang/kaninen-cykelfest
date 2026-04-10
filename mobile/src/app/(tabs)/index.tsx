@@ -902,7 +902,7 @@ export default function HomeScreen() {
             style={styles.aterkopplingGradient}
           >
             <Text style={styles.aterkopplingTitle}>Hur var festen?</Text>
-            <Text style={styles.aterkopplingSub}>Berätta hur kvällen var — fyra snabba frågor</Text>
+            <Text style={styles.aterkopplingSub}>Berätta hur kvällen var — fem snabba frågor</Text>
             {aterkopplingUnlocked ? (
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginTop: 6 }}>
                 <View style={{
