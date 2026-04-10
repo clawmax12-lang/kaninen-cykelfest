@@ -904,8 +904,7 @@ export default function HomeScreen() {
             <Text style={styles.aterkopplingTitle}>Hur var festen?</Text>
             <Text style={styles.aterkopplingSub}>Berätta hur kvällen var — fyra snabba frågor</Text>
             {aterkopplingUnlocked ? (
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 6 }}>
-                <Text style={styles.aterkopplingArrow}>→</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginTop: 6 }}>
                 <View style={{
                   backgroundColor: aterkopplingDone ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.1)',
                   borderWidth: 1,

@@ -22,10 +22,10 @@ import { useAppStore } from '@/lib/state/store';
 const STORAGE_KEY = 'aterkoppling_done';
 
 const DEFAULT_QUESTIONS = [
-  { question: 'Hur var kvällen som helhet?', options: ['Fantastisk', 'Mycket bra', 'Bra', 'Okej', 'Kunde varit bättre'] },
-  { question: 'Hur trivdes du med ditt lag?', options: ['Perfekt lagkemi', 'Bra stämning', 'Okej', 'Lite trögt', 'Ville byta lag'] },
-  { question: 'Skulle du vilja komma tillbaka nästa år?', options: ['Ja, absolut!', 'Troligtvis ja', 'Vet inte', 'Troligtvis inte'] },
-  { question: 'Hur lagom svårt var ert uppdrag? (om ni hade ett)', options: ['Lagom utmanande', 'Lite för enkelt', 'Lite för svårt', 'Vi hade inget uppdrag'] },
+  { question: 'Hur upplevde du kvällen som helhet?', options: ['Överträffade förväntningarna', 'Riktigt bra', 'Bra', 'Helt okej', 'Inte vad jag hoppats på'] },
+  { question: 'Hur fungerade samarbetet i ditt lag?', options: ['Kanon — vi klickade direkt', 'Bra stämning', 'Helt okej', 'Kunde varit bättre', 'Vi hittade inte riktigt tonen'] },
+  { question: 'Vad tyckte du om aktiviteterna under kvällen?', options: ['Perfekt blandning', 'Roliga men för få', 'Roliga men för många', 'Ojamn kvalitet', 'Inte min grej'] },
+  { question: 'Skulle du vara med igen nästa år?', options: ['Absolut — boka in mig!', 'Med stor sannolikhet', 'Kanske', 'Osäker', 'Troligtvis inte'] },
 ];
 
 export default function AterkopplingScreen() {
