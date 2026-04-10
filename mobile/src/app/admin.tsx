@@ -195,7 +195,7 @@ export default function AdminScreen() {
   const settings = useAppStore((s) => s.settings);
 
   const PIN_LENGTH = 4;
-  const ADMIN_PIN = '4729';
+  const ADMIN_PIN = '1907';
 
   // Nyheter
   type NewsItem = { id: string; title: string; body: string; type: string; createdAt: string };
