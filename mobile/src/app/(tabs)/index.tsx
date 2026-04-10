@@ -505,7 +505,7 @@ export default function HomeScreen() {
           <View style={styles.timelineContent}>
             <Text style={steg2Unlocked ? styles.timelineTitleActive : styles.timelineTitle}>Bekräfta deltagande</Text>
             <Text style={steg2Unlocked ? styles.timelineSubActive : styles.timelineSub} numberOfLines={1}>
-              {steg2Unlocked ? 'Bekräfta ditt deltagande' : 'Ännu inte tillgänglig'}
+              {steg2Unlocked ? 'Bekräfta ditt deltagande senast den 17 april' : 'Ännu inte tillgänglig'}
             </Text>
           </View>
           <View style={styles.timelineRowRight}>
