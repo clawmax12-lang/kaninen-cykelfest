@@ -198,7 +198,7 @@ export default function AdminScreen() {
   const ADMIN_PIN = '1907';
 
   // Nyheter
-  type NewsItem = { id: string; title: string; body: string; type: string; createdAt: string };
+  type NewsItem = { id: string; title: string; body: string; type: string; createdAt: string; pollId?: string | null };
   type VideoItem = { id: string; title: string; url: string; publishedAt: string };
   const [videoList, setVideoList] = useState<VideoItem[]>([]);
   const [newVideoTitle, setNewVideoTitle] = useState('');
@@ -285,6 +285,7 @@ export default function AdminScreen() {
   const [editingNewsId, setEditingNewsId] = useState<string | null>(null);
   const [editNewsTitle, setEditNewsTitle] = useState('');
   const [editNewsBody, setEditNewsBody] = useState('');
+  const [editPollOptions, setEditPollOptions] = useState<string[]>(['', '', '', '']);
 
   // Faser (5 stycken)
   type PhaseItem = { id: string; label: string; detail: string | null; orderIndex: number; unlockedAt: string | null };
@@ -840,12 +841,38 @@ export default function AdminScreen() {
     setEditingNewsId(item.id);
     setEditNewsTitle(item.title);
     setEditNewsBody(item.body);
+    // Load poll options if this is an omröstning
+    if (item.type === 'omrostning' && (item as any).pollId) {
+      api.get<{ data: any[] }>('/api/cykelfest/polls').then((res) => {
+        const polls = Array.isArray(res) ? res : (res as any).data ?? [];
+        const poll = polls.find((p: any) => p.id === (item as any).pollId);
+        if (poll) {
+          try {
+            const opts = JSON.parse(poll.options) as string[];
+            const padded = [...opts, '', '', '', ''].slice(0, 4);
+            setEditPollOptions(padded);
+          } catch { setEditPollOptions(['', '', '', '']); }
+        }
+      }).catch(() => {});
+    } else {
+      setEditPollOptions(['', '', '', '']);
+    }
   }
 
   async function saveNews(id: string) {
     if (!editNewsTitle.trim()) return;
     try {
       const original = newsList.find(n => n.id === id);
+      // If omröstning, also update the poll options
+      if (original?.type === 'omrostning' && (original as any).pollId) {
+        const validOpts = editPollOptions.map(o => o.trim()).filter(Boolean);
+        if (validOpts.length >= 2) {
+          await api.put(`/api/cykelfest/polls/${(original as any).pollId}`, {
+            question: editNewsTitle.trim(),
+            options: validOpts,
+          });
+        }
+      }
       const updated = await api.put<NewsItem>(`/api/cykelfest/news/${id}`, { title: editNewsTitle.trim(), body: editNewsBody.trim(), type: original?.type ?? 'nyhet' });
       setNewsList(prev => prev.map(n => n.id === id ? updated : n));
       setEditingNewsId(null);
@@ -1763,6 +1790,21 @@ export default function AdminScreen() {
                           multiline
                           numberOfLines={4}
                         />
+                        {item.type === 'omrostning' && (
+                          <View style={{ gap: 6 }}>
+                            <Text style={[styles.phaseLabel, { marginTop: 4 }]}>SVARSALTERNATIV</Text>
+                            {editPollOptions.map((opt, i) => (
+                              <TextInput
+                                key={i}
+                                style={styles.input}
+                                value={opt}
+                                onChangeText={t => setEditPollOptions(prev => prev.map((o, idx) => idx === i ? t : o))}
+                                placeholder={`Alternativ ${i + 1}${i < 2 ? ' (obligatoriskt)' : ' (valfritt)'}…`}
+                                placeholderTextColor="#B8B0A0"
+                              />
+                            ))}
+                          </View>
+                        )}
                         <View style={{ flexDirection: 'row', gap: 8 }}>
                           <TouchableOpacity style={[styles.publishBtn, { flex: 1 }]} onPress={() => saveNews(item.id)}>
                             <Text style={styles.publishBtnText}>Spara</Text>
