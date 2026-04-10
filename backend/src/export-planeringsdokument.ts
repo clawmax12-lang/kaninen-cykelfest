@@ -113,10 +113,24 @@ function hostAddress(hostPair: string, lookup: Map<string, Participant>): string
 // ─── MAIN EXPORT ─────────────────────────────────────────────────────────────
 export async function generatePlaneringsdokument(): Promise<Buffer> {
   // Fetch data
-  const [dbParticipants, dbTeams] = await Promise.all([
+  const [dbParticipants, dbTeams, dbAssignments] = await Promise.all([
     prisma.participant.findMany({ include: { team: true } }),
     prisma.team.findMany(),
+    prisma.hostAssignment.findMany(),
   ]);
+
+  // Build PIN lookup: hostNames → pin, and per-person PIN map
+  const pinByHostPair = new Map<string, string>();
+  const mealByHostPair = new Map<string, string>();
+  const pinByPerson = new Map<string, string>();
+  for (const a of dbAssignments) {
+    pinByHostPair.set(a.hostNames, a.pin);
+    mealByHostPair.set(a.hostNames, a.meal ?? "");
+    const names = a.hostNames.split(/[;&]/).map((n: string) => n.trim());
+    for (const n of names) {
+      pinByPerson.set(n, a.pin);
+    }
+  }
 
   const teamMap = new Map<string, string>(dbTeams.map((t) => [t.id, t.name]));
 
@@ -199,6 +213,7 @@ export async function generatePlaneringsdokument(): Promise<Buffer> {
     ["AA7", "Efterrätt hos...", RED_FILL], ["AB7", "Adress Efterrätt", RED_FILL],
     ["AC7", "Värdskap Efterrätt", RED_FILL],
     ["AD7", "Uppdrag", DGN_FILL], ["AE7", "Typ av uppdrag", DGN_FILL],
+    ["AF7", "PIN värdskap", DGN_FILL],
   ];
   for (const [cell, text, fill] of h7) {
     ws1.getCell(cell).value = text;
@@ -250,6 +265,10 @@ export async function generatePlaneringsdokument(): Promise<Buffer> {
     // Uppdrag
     row.getCell(30).value = pi.mission ? "JA" : null;
     row.getCell(31).value = pi.mission && pi.mission !== "Uppdrag kommer" ? pi.mission : null;
+
+    // PIN — show if this person is a host for any meal
+    const personPin = pinByPerson.get(pi.name);
+    row.getCell(32).value = personPin ?? null;
   }
 
   // Column widths
@@ -259,7 +278,7 @@ export async function generatePlaneringsdokument(): Promise<Buffer> {
     L: 15.16, M: 14.83, N: 15.16, O: 17.33, P: 15.66, R: 17.5, S: 5.16,
     T: 21.33, U: 40.0, V: 27.66, W: 15.66,
     X: 39.83, Y: 27.66, Z: 18.16,
-    AA: 32.66, AB: 27.66, AC: 18.0, AD: 16.16, AE: 36.66,
+    AA: 32.66, AB: 27.66, AC: 18.0, AD: 16.16, AE: 36.66, AF: 14.0,
   };
   for (const [col, w] of Object.entries(widths1)) {
     ws1.getColumn(col).width = w;
@@ -347,7 +366,8 @@ export async function generatePlaneringsdokument(): Promise<Buffer> {
       const m = guests.filter((g) => g.gender === "Man").length;
 
       const hostRow = ws.getRow(row);
-      hostRow.getCell(1).value = `Värd: ${hp}    [${k}K / ${m}M  —  Tot: ${guests.length}]`;
+      const pin = pinByHostPair.get(hp) ?? "";
+      hostRow.getCell(1).value = `Värd: ${hp}    [${k}K / ${m}M  —  Tot: ${guests.length}]  PIN: ${pin}`;
       hostRow.getCell(1).font = { bold: true };
       hostRow.getCell(1).fill = HDR_FILL;
       row++;
@@ -413,6 +433,7 @@ export async function generatePlaneringsdokument(): Promise<Buffer> {
   hdr6.getCell(3).value = "Förnamn"; hdr6.getCell(3).font = HDR_FONT;
   hdr6.getCell(4).value = "Lag"; hdr6.getCell(4).font = HDR_FONT;
   hdr6.getCell(5).value = "Uppdrag"; hdr6.getCell(5).font = HDR_FONT;
+  hdr6.getCell(6).value = "PIN"; hdr6.getCell(6).font = HDR_FONT;
 
   // Group mission people by team
   const missionByTeam = new Map<string, Participant[]>();
@@ -434,6 +455,7 @@ export async function generatePlaneringsdokument(): Promise<Buffer> {
       row.getCell(3).value = p.fornamn;
       row.getCell(4).value = p.team;
       row.getCell(5).value = p.mission !== "Uppdrag kommer" ? p.mission : null;
+      row.getCell(6).value = pinByPerson.get(p.name) ?? null;
       r6++;
     }
   }
@@ -443,6 +465,7 @@ export async function generatePlaneringsdokument(): Promise<Buffer> {
   ws6.getColumn("C").width = 16.0;
   ws6.getColumn("D").width = 20.0;
   ws6.getColumn("E").width = 40.0;
+  ws6.getColumn("F").width = 10.0;
 
   // ─── WRITE ─────────────────────────────────────────────────────
   const buf = await wb.xlsx.writeBuffer();
