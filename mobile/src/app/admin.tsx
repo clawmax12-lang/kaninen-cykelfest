@@ -3561,7 +3561,7 @@ export default function AdminScreen() {
                   }
                 }}
               >
-                <Text style={{ fontFamily: 'DMSans_400Regular', fontSize: 12, color: '#5A3800' }}>Återställ återkoppling (testläge)</Text>
+                <Text style={{ fontFamily: 'DMSans_400Regular', fontSize: 12, color: '#5A3800' }}>Nollställ återkoppling</Text>
               </TouchableOpacity>
             ) : null}
 
