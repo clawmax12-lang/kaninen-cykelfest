@@ -50,7 +50,7 @@ export default function LagDetailScreen() {
 
   return (
     <View style={styles.container}>
-      <LinearGradient colors={info.colors} style={[styles.header, { paddingTop: insets.top + 8 }]}>
+      <LinearGradient colors={info.colors} style={[styles.header, { paddingTop: insets.top + 4 }]}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
           <ChevronLeft size={22} color="#A8D4B8" strokeWidth={2} />
         </TouchableOpacity>

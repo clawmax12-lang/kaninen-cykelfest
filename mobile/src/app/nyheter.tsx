@@ -70,7 +70,7 @@ export default function NyheterScreen() {
         colors={['#1a4a45', '#0a2220']}
         start={{ x: 0.2, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + 12 }]}
+        style={[styles.header, { paddingTop: insets.top + 6 }]}
       >
         {/* Subtle diagonal texture stripes */}
         <View style={styles.headerTexture} pointerEvents="none">

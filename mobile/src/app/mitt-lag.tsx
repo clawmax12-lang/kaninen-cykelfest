@@ -236,7 +236,7 @@ export default function MittLagScreen() {
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <LinearGradient colors={['#1A3A2A', '#2A4A3A']} style={[styles.header, { paddingTop: insets.top + 8 }]}>
+      <LinearGradient colors={['#1A3A2A', '#2A4A3A']} style={[styles.header, { paddingTop: insets.top + 4 }]}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
           <ChevronLeft size={22} color="#A8D4B8" strokeWidth={2} />
         </TouchableOpacity>

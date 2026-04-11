@@ -43,7 +43,7 @@ export default function SchemaScreen() {
     <View style={styles.container} testID="schema-screen">
       <LinearGradient
         colors={['#1C4F4A', '#2A6B64']}
-        style={[styles.header, { paddingTop: insets.top + 8 }]}
+        style={[styles.header, { paddingTop: insets.top + 4 }]}
       >
         <Text style={styles.headerEyebrow}>KANINENS CYKELFEST 2026</Text>
         <Text style={styles.headerTitle}>Program</Text>

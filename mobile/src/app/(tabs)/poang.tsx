@@ -317,7 +317,7 @@ export default function PoangScreen() {
   if (!isUnlocked) {
     return (
       <View style={styles.container} testID="poang-screen">
-        <LinearGradient colors={['#1C4F4A', '#2A6B64']} style={[styles.header, { paddingTop: insets.top + 12 }]}>
+        <LinearGradient colors={['#1C4F4A', '#2A6B64']} style={[styles.header, { paddingTop: insets.top + 6 }]}>
           <Text style={styles.headerEyebrow}>KANINENS CYKELFEST 2026</Text>
           <Text style={styles.headerTitle}>Poäng</Text>
         </LinearGradient>
@@ -339,7 +339,7 @@ export default function PoangScreen() {
 
   return (
     <View style={styles.container} testID="poang-screen">
-      <LinearGradient colors={['#1C4F4A', '#2A6B64']} style={[styles.header, { paddingTop: insets.top + 12 }]}>
+      <LinearGradient colors={['#1C4F4A', '#2A6B64']} style={[styles.header, { paddingTop: insets.top + 6 }]}>
         <Text style={styles.headerEyebrow}>KANINENS CYKELFEST 2026</Text>
         <Text style={styles.headerTitle}>Poäng</Text>
       </LinearGradient>

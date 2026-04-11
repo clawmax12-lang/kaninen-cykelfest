@@ -20,7 +20,7 @@ export default function SOSScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 20 }]} testID="sos-screen">
       {/* Header */}
-      <LinearGradient colors={['#8B1A1A', '#C0392B']} style={[styles.header, { paddingTop: insets.top + 8 }]}>
+      <LinearGradient colors={['#8B1A1A', '#C0392B']} style={[styles.header, { paddingTop: insets.top + 4 }]}>
         <Text style={styles.headerEyebrow}>KANINENS CYKELFEST 2026</Text>
         <Text style={styles.headerTitle}>Hjälp</Text>
       </LinearGradient>

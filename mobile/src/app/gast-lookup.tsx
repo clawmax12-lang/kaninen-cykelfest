@@ -86,7 +86,7 @@ export default function GastLookupScreen() {
 
   return (
     <View style={styles.container} testID="gast-lookup-screen">
-      <LinearGradient colors={['#1A3A6B', '#0F2347']} style={[styles.header, { paddingTop: insets.top + 8 }]}>
+      <LinearGradient colors={['#1A3A6B', '#0F2347']} style={[styles.header, { paddingTop: insets.top + 4 }]}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn} testID="back-btn">
           <ChevronLeft size={22} color="#A8D4B8" />
         </TouchableOpacity>

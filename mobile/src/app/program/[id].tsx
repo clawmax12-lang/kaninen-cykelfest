@@ -149,7 +149,7 @@ export default function ProgramDetailScreen() {
       {/* Gradient header */}
       <LinearGradient
         colors={['#1C4F4A', '#2A6B64']}
-        style={[styles.header, { paddingTop: insets.top + 6 }]}
+        style={[styles.header, { paddingTop: insets.top + 3 }]}
       >
         {/* Back button */}
         <TouchableOpacity

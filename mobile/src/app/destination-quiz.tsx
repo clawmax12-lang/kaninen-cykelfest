@@ -268,7 +268,7 @@ function DestinationQuizScreenInner() {
     <View style={styles.container} testID="destination-quiz-screen">
       <LinearGradient
         colors={['#1C4F4A', '#2A6B64']}
-        style={[styles.header, { paddingTop: insets.top + 16 }]}
+        style={[styles.header, { paddingTop: insets.top + 8 }]}
       >
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
           <ChevronLeft size={22} color="rgba(245,239,224,0.9)" />

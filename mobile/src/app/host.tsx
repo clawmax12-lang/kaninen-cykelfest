@@ -84,7 +84,7 @@ export default function HostScreen() {
   if (!isLoggedIn) {
     return (
       <View style={styles.container} testID="host-login-screen">
-        <LinearGradient colors={['#1A3A6B', '#0F2347']} style={[styles.loginHeader, { paddingTop: insets.top + 8 }]}>
+        <LinearGradient colors={['#1A3A6B', '#0F2347']} style={[styles.loginHeader, { paddingTop: insets.top + 4 }]}>
           <TouchableOpacity onPress={() => router.back()} style={styles.backBtn} testID="back-btn">
             <ChevronLeft size={22} color="#A8D4B8" />
           </TouchableOpacity>
@@ -187,7 +187,7 @@ export default function HostScreen() {
     <ScrollView style={styles.container} contentContainerStyle={styles.content} testID="host-panel-screen">
       <LinearGradient
         colors={isTask ? ['#7A3E1A', '#4A2210'] : ['#1A3A6B', '#0F2347']}
-        style={[styles.header, { paddingTop: insets.top + 8 }]}
+        style={[styles.header, { paddingTop: insets.top + 4 }]}
       >
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn} testID="back-btn">
           <ChevronLeft size={22} color="#A8D4B8" />

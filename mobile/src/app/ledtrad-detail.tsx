@@ -42,7 +42,7 @@ export default function LedtradDetailScreen() {
     <View style={styles.container} testID="ledtrad-detail-screen">
       <LinearGradient
         colors={config.colors}
-        style={[styles.header, { paddingTop: insets.top + 8 }]}
+        style={[styles.header, { paddingTop: insets.top + 4 }]}
       >
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn} testID="back-button">
           <ChevronLeft size={22} color="rgba(255,255,255,0.9)" />

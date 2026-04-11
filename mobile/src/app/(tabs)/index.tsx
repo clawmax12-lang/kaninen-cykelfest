@@ -302,7 +302,7 @@ export default function HomeScreen() {
         </View>
       ) : null}
       {/* HEADER */}
-      <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
+      <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
         <View style={styles.headerTexture} pointerEvents="none">
           {Array.from({ length: 30 }).map((_, i) => (
             <View key={i} style={[styles.textureStripe, { left: i * 26 - 200 }]} />
@@ -956,8 +956,8 @@ const styles = StyleSheet.create({
   // HEADER
   header: {
     backgroundColor: '#1C4F4A',
-    paddingTop: 16,
-    paddingBottom: 24,
+    paddingTop: 8,
+    paddingBottom: 16,
     paddingHorizontal: 22,
     position: 'relative',
     overflow: 'hidden',
