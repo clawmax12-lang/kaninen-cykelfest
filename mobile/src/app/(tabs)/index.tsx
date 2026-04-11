@@ -572,7 +572,7 @@ export default function HomeScreen() {
               ) : null}
             </View>
             <Text style={vardinfoUnlocked ? styles.timelineSubActive : styles.timelineSub} numberOfLines={1}>
-              {vardinfoUnlocked ? 'Se vad som gäller för mitt värdskap' : `Tillgänglig från ${vardinfoDateLabel}.`}
+              {vardinfoUnlocked ? 'Se vad som gäller för mitt värdskap' : `Tillgänglig från ${vardinfoDateLabel}`}
             </Text>
           </View>
           <View style={styles.timelineRowRight}>
@@ -824,7 +824,7 @@ export default function HomeScreen() {
             </View>
             <Text style={styles.quickLinkTextPrimary}>Mitt värdskap & uppdrag</Text>
             <Text style={styles.quickLinkLockedSub}>
-              {vardinfoUnlocked ? 'Info om värdskap & uppdrag' : `Tillgänglig från ${vardinfoDateLabel}.`}
+              {vardinfoUnlocked ? 'Info om värdskap & uppdrag' : `Tillgänglig från ${vardinfoDateLabel}`}
             </Text>
           </LinearGradient>
         </TouchableOpacity>
