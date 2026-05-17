@@ -233,7 +233,10 @@ export default function HomeScreen() {
     : [];
   const pollVotes = activePoll?.votes ?? [];
   const myVote = null; // votes tracked locally via userAnswers
-  const totalVotes = pollVotes.length;
+  // Count unique voters across ALL polls, not just the active one
+  const uniqueVoterIds = new Set<string>();
+  polls.forEach((p) => p.votes?.forEach((v) => uniqueVoterIds.add(v.participantId)));
+  const totalVotes = uniqueVoterIds.size;
   const hasVoted = userAnswers[activePoll?.id ?? ''] !== undefined;
 
   const latestVideos = [...videos].sort(
@@ -266,6 +269,8 @@ export default function HomeScreen() {
         participantId: voterId,
         optionIndex: choice,
       });
+      // Refetch polls so vote count updates
+      refetch();
     } catch (e) {
       console.error('Vote error:', e);
       setPollVoteError('Kunde inte spara rösten. Försök igen.');

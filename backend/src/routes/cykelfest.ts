@@ -471,8 +471,13 @@ cykelfestRouter.post("/polls/:id/vote", async (c) => {
   // Look up existing participant by accessCode (device UUID)
   let participant = await prisma.participant.findUnique({ where: { accessCode: deviceId } });
   if (!participant) {
-    // No matching participant — store vote locally on device only, do not create Anonym records
-    return c.json({ data: { pollId: id, participantId: deviceId, optionIndex: body.optionIndex, local: true } });
+    // Create an anonymous participant so the vote is persisted and counted
+    participant = await prisma.participant.create({
+      data: {
+        name: "Anonym",
+        accessCode: deviceId,
+      },
+    });
   }
   const vote = await prisma.pollVote.upsert({
     where: { pollId_participantId: { pollId: id, participantId: participant.id } },
