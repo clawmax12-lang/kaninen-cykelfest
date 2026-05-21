@@ -61,24 +61,7 @@ export default function ProgramDetailScreen() {
   const [assignments, setAssignments] = useState<HostAssignment[]>([]);
   const [detailLoading, setDetailLoading] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
-  const [backendStops, setBackendStops] = useState<Record<string, { description?: string; rules?: string; scoring?: string }>>({});
-
-  useEffect(() => {
-    api.get<{ id: string; description?: string; rules?: string; scoring?: string }[]>('/api/cykelfest/program-stops')
-      .then((arr) => {
-        const list = Array.isArray(arr) ? arr : [];
-        const record: Record<string, { description?: string; rules?: string; scoring?: string }> = {};
-        for (const item of list) {
-          record[item.id] = {
-            description: item.description || undefined,
-            rules: item.rules || undefined,
-            scoring: item.scoring || undefined,
-          };
-        }
-        setBackendStops(record);
-      })
-      .catch(() => {});
-  }, []);
+  const programStops = useAppStore((s) => s.programStops);
 
   // Ladda gästlista när förrätt/middag/efterrätt-sidan öppnas
   useEffect(() => {
@@ -129,12 +112,13 @@ export default function ProgramDetailScreen() {
     );
   }
 
-  const backendData = backendStops[stop.id] ?? {};
+  const backendLoaded = Object.keys(programStops).length > 0;
+  const backendData = programStops[stop.id] ?? {};
   const merged = {
     ...stop,
-    description: backendData.description || stop.description || (stop as any).hiddenText || stop.label,
-    rules: backendData.rules || stop.rules,
-    scoring: backendData.scoring || stop.scoring,
+    description: backendLoaded ? (backendData.description || '') : '',
+    rules: backendLoaded ? (backendData.rules || '') : '',
+    scoring: backendLoaded ? (backendData.scoring || '') : '',
   };
 
   const cardBg =

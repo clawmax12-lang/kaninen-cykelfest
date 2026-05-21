@@ -20,6 +20,7 @@ export function useData() {
   const setScores = useAppStore((s) => s.setScores);
   const setArrivals = useAppStore((s) => s.setArrivals);
   const setSettings = useAppStore((s) => s.setSettings);
+  const setProgramStops = useAppStore((s) => s.setProgramStops);
   const setLoading = useAppStore((s) => s.setLoading);
   const isLoading = useAppStore((s) => s.isLoading);
   const setLastFetched = useAppStore((s) => s.setLastFetched);
@@ -31,7 +32,7 @@ export function useData() {
     setLoading(true);
     setError(false);
     try {
-      const [phases, teams, news, videos, polls, scores, arrivals, settings] =
+      const [phases, teams, news, videos, polls, scores, arrivals, settings, programStopsRaw] =
         await Promise.all([
           api.get<Phase[]>('/api/cykelfest/phases').catch(() => null),
           api.get<Team[]>('/api/cykelfest/teams').catch(() => null),
@@ -41,6 +42,7 @@ export function useData() {
           api.get<Score[]>('/api/cykelfest/scores').catch(() => null),
           api.get<TeamArrival[]>('/api/cykelfest/arrivals').catch(() => null),
           api.get<Record<string, string>>('/api/cykelfest/settings').catch(() => null),
+          api.get<{ id: string; description?: string; rules?: string; scoring?: string }[]>('/api/cykelfest/program-stops').catch(() => null),
         ]);
       // If all calls returned null, treat as an error
       if (!phases && !teams && !news && !videos && !polls && !scores && !arrivals && !settings) {
@@ -54,6 +56,13 @@ export function useData() {
         if (scores) setScores(scores);
         if (arrivals) setArrivals(arrivals);
         if (settings) setSettings(settings);
+        if (programStopsRaw) {
+          const record: Record<string, { description?: string; rules?: string; scoring?: string }> = {};
+          for (const item of programStopsRaw) {
+            record[item.id] = { description: item.description || undefined, rules: item.rules || undefined, scoring: item.scoring || undefined };
+          }
+          setProgramStops(record);
+        }
         setLastFetched(Date.now());
       }
     } catch (e) {
@@ -71,6 +80,7 @@ export function useData() {
     setScores,
     setArrivals,
     setSettings,
+    setProgramStops,
     setLoading,
     setLastFetched,
   ]);

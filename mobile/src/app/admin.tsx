@@ -1868,8 +1868,8 @@ export default function AdminScreen() {
               { label: 'Kaninens Cykelfest', settingKey: 'unlock_steg6', sub: 'Startskottet — dags att cykla!', emoji: '🐰', colors: ['#C0392B', '#922B21'] },
             ].map((steg, i) => {
               const val = settings[steg.settingKey];
-              const todayStr = new Date().toISOString().slice(0, 10);
-              const isUnlocked = val ? todayStr >= val.slice(0, 10) : false;
+              const nowStr = (() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}T${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`; })();
+              const isUnlocked = val ? nowStr >= val : false;
               let dateLabel = '—';
               if (val) {
                 const d = new Date(val.length === 10 ? val + 'T00:00:00' : val);

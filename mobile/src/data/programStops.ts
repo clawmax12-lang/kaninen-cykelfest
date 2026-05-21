@@ -25,7 +25,7 @@ export const STOPS: ProgramStop[] = [
     icon: '🥂',
     location: 'Hos ett värdpar',
     locationVisible: 'visible',
-    description: 'Förrätt & kaninens kluring',
+
     accentColor: '#B87A2A',
     cardType: 'food',
     secretLocation: true,
@@ -41,9 +41,7 @@ export const STOPS: ProgramStop[] = [
     locationVisible: 'hidden',
     accentColor: '#2A7A5E',
     cardType: 'activity',
-    hiddenText: 'En jordglob betyder så mycket',
-    rules: 'Lagen tävlar mot varandra. Alla i laget måste delta. Inga hjälpmedel tillåtna.',
-    scoring: 'Vinnarlaget får 10 poäng, tvåan 9 poäng, trean 8 poäng och så vidare.',
+
   },
   {
     id: 'middag',
@@ -53,7 +51,7 @@ export const STOPS: ProgramStop[] = [
     icon: '🍽️',
     location: 'Hos ett värdpar',
     locationVisible: 'visible',
-    description: 'Varmrätt & kaninens kluring',
+
     accentColor: '#B87A2A',
     cardType: 'food',
     secretLocation: true,
@@ -69,9 +67,7 @@ export const STOPS: ProgramStop[] = [
     locationVisible: 'hidden',
     accentColor: '#2A7A5E',
     cardType: 'activity',
-    hiddenText: 'Jorden runt på sextio minuter',
-    rules: 'Lagen tävlar mot varandra. Alla i laget måste delta. Inga hjälpmedel tillåtna.',
-    scoring: 'Vinnarlaget får 10 poäng, tvåan 9 poäng, trean 8 poäng och så vidare.',
+
   },
   {
     id: 'efterratt',
@@ -81,7 +77,7 @@ export const STOPS: ProgramStop[] = [
     icon: '🍮',
     location: 'Hos ett värdpar',
     locationVisible: 'visible',
-    description: 'Efterrätt & kaninens kluring',
+
     accentColor: '#B87A2A',
     cardType: 'food',
     secretLocation: true,
@@ -95,11 +91,9 @@ export const STOPS: ProgramStop[] = [
     icon: '🐷',
     location: 'Dold plats',
     locationVisible: 'hidden',
-    description: 'Den stora grisfesten',
+
     accentColor: '#1C4F4A',
     cardType: 'party',
     hideLocation: true,
-    rules: 'Lagen tävlar mot varandra. Alla i laget måste delta. Inga hjälpmedel tillåtna.',
-    scoring: 'Vinnarlaget får 10 poäng, tvåan 9 poäng, trean 8 poäng och så vidare.',
   },
 ];

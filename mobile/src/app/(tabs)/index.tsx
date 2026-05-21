@@ -110,15 +110,16 @@ export default function HomeScreen() {
     });
   }, []);
 
+  // Detect end-of-playback via playToEnd event
   useEffect(() => {
-    if (!videoPlaying) return;
-    const interval = setInterval(() => {
-      if (!videoPlayer?.playing) {
-        setVideoPlaying(false);
-      }
-    }, 500);
-    return () => clearInterval(interval);
-  }, [videoPlaying, videoPlayer]);
+    if (!videoPlayer) return;
+    const sub = videoPlayer.addListener('playToEnd', () => {
+      setVideoPlaying(false);
+    });
+    return () => { sub?.remove?.(); };
+  }, [videoPlayer]);
+
+
 
   // Compare dates as local YYYY-MM-DD strings to avoid UTC timezone offset issues
   const nowStr = (() => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}T${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`; })();
@@ -492,38 +493,7 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
         <View style={styles.kalendariumCard}>
-        {/* Fas 1 */}
-        <TouchableOpacity
-          activeOpacity={steg2Unlocked ? 0.6 : 1}
-          style={[styles.timelineRow, steg2Unlocked ? styles.timelineRowActive : styles.timelineRowLocked]}
-          onPress={() => steg2Unlocked ? router.push('/bekraftad-anmalan' as any) : null}
-        >
-          {steg2Unlocked ? (
-            <LinearGradient colors={['#1C4F4A', '#2A6B64']} style={[styles.timelineDot, styles.timelineDotActive]}>
-              <Text style={[styles.timelineDotNum, { color: '#A8D4B8' }]}>1</Text>
-            </LinearGradient>
-          ) : (
-            <View style={[styles.timelineDot, styles.timelineDotLocked]}>
-              <Text style={styles.timelineDotNum}>1</Text>
-            </View>
-          )}
-          <View style={styles.timelineContent}>
-            <Text style={steg2Unlocked ? styles.timelineTitleActive : styles.timelineTitle}>Bekräfta deltagande</Text>
-            <Text style={steg2Unlocked ? styles.timelineSubActive : styles.timelineSub} numberOfLines={1}>
-              {steg2Unlocked ? 'Bekräfta senast den 17 april' : 'Ännu inte tillgänglig'}
-            </Text>
-          </View>
-          <View style={styles.timelineRowRight}>
-            <View style={steg2Unlocked ? styles.badgePagaende : styles.badgeLocked}>
-              <Text style={steg2Unlocked ? styles.badgePagaendeText : styles.badgeLockedText}>{steg2Unlocked ? 'Öppet' : 'Stängt'}</Text>
-            </View>
-            <ChevronRight size={14} color="rgba(255,255,255,0.4)" />
-          </View>
-        </TouchableOpacity>
-
-        <View style={styles.timelineDivider} />
-
-        {/* Fas 3 */}
+        {/* Steg 2 — Info om mitt lag */}
         <TouchableOpacity
           activeOpacity={lagUnlocked ? 0.85 : 0.6}
           style={[styles.timelineRow, lagUnlocked ? styles.timelineRowActive : styles.timelineRowLocked]}
@@ -554,7 +524,7 @@ export default function HomeScreen() {
 
         <View style={styles.timelineDivider} />
 
-        {/* Fas 4 */}
+        {/* Steg 3 — Info om mitt värdskap & uppdrag */}
         <TouchableOpacity
           activeOpacity={vardinfoUnlocked ? 0.85 : 0.6}
           style={[styles.timelineRow, vardinfoUnlocked ? styles.timelineRowActive : styles.timelineRowLocked]}
@@ -571,7 +541,7 @@ export default function HomeScreen() {
           )}
           <View style={styles.timelineContent}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <Text style={vardinfoUnlocked ? styles.timelineTitleActive : styles.timelineTitle}>Info om mitt värdskap & uppdrag</Text>
+              <Text style={vardinfoUnlocked ? styles.timelineTitleActive : styles.timelineTitle}>Info om värdskap & uppdrag</Text>
               {hostHasUpdate && vardinfoUnlocked ? (
                 <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: '#E53935' }} />
               ) : null}
@@ -585,6 +555,37 @@ export default function HomeScreen() {
               <Text style={vardinfoUnlocked ? styles.badgePagaendeText : styles.badgeLockedText}>{vardinfoUnlocked ? 'Öppet' : 'Stängt'}</Text>
             </View>
             <ChevronRight size={14} color={vardinfoUnlocked ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.4)'} />
+          </View>
+        </TouchableOpacity>
+
+        <View style={styles.timelineDivider} />
+
+        {/* Steg 4 — Info om min förrätt */}
+        <TouchableOpacity
+          activeOpacity={adressUnlocked ? 0.85 : 0.6}
+          style={[styles.timelineRow, adressUnlocked ? styles.timelineRowActive : styles.timelineRowLocked]}
+          onPress={() => router.push(adressUnlocked ? '/program/forrat' as any : '/kalendarium' as any)}
+        >
+          {adressUnlocked ? (
+            <LinearGradient colors={['#1C4F4A', '#2A6B64']} style={[styles.timelineDot, styles.timelineDotActive]}>
+              <Text style={[styles.timelineDotNum, { color: '#A8D4B8' }]}>4</Text>
+            </LinearGradient>
+          ) : (
+            <View style={[styles.timelineDot, styles.timelineDotLocked]}>
+              <Text style={styles.timelineDotNum}>4</Text>
+            </View>
+          )}
+          <View style={styles.timelineContent}>
+            <Text style={adressUnlocked ? styles.timelineTitleActive : styles.timelineTitle}>Info om min förrätt</Text>
+            <Text style={adressUnlocked ? styles.timelineSubActive : styles.timelineSub} numberOfLines={1}>
+              {adressUnlocked ? 'Var äter jag min förrätt?' : `Tillgänglig från ${adressDateLabel}`}
+            </Text>
+          </View>
+          <View style={styles.timelineRowRight}>
+            <View style={adressUnlocked ? styles.badgePagaende : styles.badgeLocked}>
+              <Text style={adressUnlocked ? styles.badgePagaendeText : styles.badgeLockedText}>{adressUnlocked ? 'Öppet' : 'Stängt'}</Text>
+            </View>
+            <ChevronRight size={14} color={adressUnlocked ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.4)'} />
           </View>
         </TouchableOpacity>
         </View>

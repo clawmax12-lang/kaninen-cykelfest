@@ -90,7 +90,7 @@ export default function KalendariumScreen() {
 
   const todayStr = (() => {
     const n = new Date();
-    return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`;
+    return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}T${String(n.getHours()).padStart(2, '0')}:${String(n.getMinutes()).padStart(2, '0')}`;
   })();
 
   const steg1Unlocked = settings['unlock_steg1'] ? todayStr >= settings['unlock_steg1'] : true; // default: always visible

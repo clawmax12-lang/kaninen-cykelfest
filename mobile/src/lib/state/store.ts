@@ -95,6 +95,7 @@ interface AppState {
   scores: Score[];
   arrivals: TeamArrival[];
   settings: Record<string, string>;
+  programStops: Record<string, { description?: string; rules?: string; scoring?: string }>;
   isLoading: boolean;
   lastFetched: number | null;
 
@@ -109,6 +110,7 @@ interface AppState {
   setScores: (scores: Score[]) => void;
   setArrivals: (arrivals: TeamArrival[]) => void;
   setSettings: (settings: Record<string, string>) => void;
+  setProgramStops: (stops: Record<string, { description?: string; rules?: string; scoring?: string }>) => void;
   setLoading: (loading: boolean) => void;
   setLastFetched: (ts: number) => void;
 }
@@ -123,6 +125,7 @@ export const useAppStore = create<AppState>((set) => ({
   scores: [],
   arrivals: [],
   settings: {},
+  programStops: {},
   isLoading: false,
   lastFetched: null,
   scoresLastUpdated: null,
@@ -139,6 +142,7 @@ export const useAppStore = create<AppState>((set) => ({
   })),
   setArrivals: (arrivals) => set({ arrivals }),
   setSettings: (settings) => set({ settings }),
+  setProgramStops: (programStops) => set({ programStops }),
   setLoading: (isLoading) => set({ isLoading }),
   setLastFetched: (lastFetched) => set({ lastFetched }),
 }));

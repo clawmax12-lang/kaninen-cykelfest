@@ -111,7 +111,12 @@ export default function LedtradScreen() {
     if (!val) return '';
     const d = new Date(val);
     if (isNaN(d.getTime())) return '';
-    return `Öppnar kl ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+    const day = d.getDate();
+    const monthNames = ['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
+    const month = monthNames[d.getMonth()];
+    const hours = String(d.getHours()).padStart(2, '0');
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    return `Öppnas den ${day} ${month} kl. ${hours}.${minutes}`;
   };
 
   return (
@@ -151,6 +156,7 @@ export default function LedtradScreen() {
                 </View>
                 <Text style={styles.cardTitle}>{card.title}</Text>
                 <Text style={styles.cardSubtitle}>{card.subtitle}</Text>
+                {!unlocked && unlockLabel ? <Text style={styles.cardSubtitle}>{unlockLabel}</Text> : null}
               </LinearGradient>
             </PressableScale>
           );
